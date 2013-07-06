@@ -68,6 +68,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/Path-FindDev/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/Path-FindDev",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/Path-FindDev.git",
+         "web" : "https://github.com/kentfredric/Path-FindDev"
+      }
+   },
    "version" : "0.1.0",
    "x_BuiltWith" : {
       "modules" : {
