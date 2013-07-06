@@ -26,6 +26,33 @@ FUNCTIONS
 
         export PATH_FINDDEV_DEBUG=1
 
+  find_dev
+        my $result = find_dev('/some/path');
+
+    If a "dev" directory is found at, or above, "/some/path", it will be
+    returned as a "Path::Tiny"
+
+    If you pass configurations to import:
+
+        use Path::FindDev find_dev => { set => $someset };
+
+    Then the exported "find_dev" will pass that set name to "Path::IsDev".
+
+    Though you should only do this if
+
+    *   the default set is inadequate for your useage
+
+    *   you don't want the set to be overriden by %ENV
+
+    Additionally, you can call find_dev directly:
+
+        require Path::FindDev;
+
+        my $result = Path::FindDev::find_dev('/some/path');
+
+    Which by design inhibits your capacity to specify an alternative set in
+    code.
+
 EXAMPLE USE-CASES
     Have you ever found yourself doing
 

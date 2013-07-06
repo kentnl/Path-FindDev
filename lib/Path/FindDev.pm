@@ -67,6 +67,7 @@ sub _build_find_dev {
 
 }
 
+
 *find_dev = _build_find_dev( __PACKAGE__, 'find_dev', {} );
 
 1;
@@ -109,6 +110,37 @@ debugging callback:
 To enable debug messages to C<STDERR>
 
     export PATH_FINDDEV_DEBUG=1
+
+=head2 find_dev
+
+    my $result = find_dev('/some/path');
+
+If a C<dev> directory is found at, or above, C</some/path>, it will be returned
+as a L<< C<Path::Tiny>|Path::Tiny >>
+
+If you pass configurations to import:
+
+    use Path::FindDev find_dev => { set => $someset };
+
+Then the exported C<find_dev> will pass that set name to L<< C<Path::IsDev>|Path::IsDev >>.
+
+Though you should only do this if
+
+=over 4
+
+=item * the default set is inadequate for your useage
+
+=item * you don't want the set to be overriden by C<%ENV>
+
+=back
+
+Additionally, you can call find_dev directly:
+
+    require Path::FindDev;
+
+    my $result = Path::FindDev::find_dev('/some/path');
+
+Which by design inhibits your capacity to specify an alternative set in code.
 
 =head1 EXAMPLE USE-CASES
 
