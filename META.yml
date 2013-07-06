@@ -20,7 +20,7 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.1.0
+    version: v0.1.1
 requires:
   File::Spec: 0
   Path::IsDev: v0.1.1
@@ -33,7 +33,7 @@ resources:
   bugtracker: https://github.com/kentfredric/Path-FindDev/issues
   homepage: https://github.com/kentfredric/Path-FindDev
   repository: https://github.com/kentfredric/Path-FindDev.git
-version: 0.1.0
+version: 0.1.1
 x_BuiltWith:
   modules:
     Dist::Zilla::PluginBundle::Author::KENTNL: 1.7.4

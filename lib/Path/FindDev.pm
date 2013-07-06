@@ -6,7 +6,7 @@ BEGIN {
   $Path::FindDev::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::VERSION = '0.1.0';
+  $Path::FindDev::VERSION = '0.1.1';
 }
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
@@ -35,7 +35,7 @@ sub _build_find_dev_all {
     my ($path) = @_;
     my $path_o = _path($path)->absolute;
   FLOW: {
-      debug( 'Checking :' . $path );
+      debug( 'Checking :' . $path_o );
       if ( $path_o->stringify eq $root->stringify ) {
         debug('Found OS Root');
         return;
@@ -84,7 +84,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
 
 =head1 DESCRIPTION
 
