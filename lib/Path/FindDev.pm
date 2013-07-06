@@ -3,7 +3,7 @@ use warnings;
 
 package Path::FindDev;
 
-# ABSTRACT: Find a development path somewhere in an upper heirarchy.
+# ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
 =head1 DESCRIPTION
 
@@ -18,7 +18,7 @@ with a few directory walking tricks.
         print "No development root :(";
     }
 
-=head1 EXAMPLE USECASES
+=head1 EXAMPLE USE-CASES
 
 Have you ever found yourself doing
 
@@ -27,7 +27,7 @@ Have you ever found yourself doing
 
 In a test?
 
-Have you found yourself paranoid of filesystem semantics and tried
+Have you found yourself paranoid of file-system semantics and tried
 
     use FindBin;
     use Path::Tiny qw(path)
@@ -37,7 +37,7 @@ Have you ever done either of the above in a test, only to
 find you've needed to move the test to a deeper hierarchy,
 and thus, need to re-write all your path resolution?
 
-Have you ever had this problem for mulitple files?
+Have you ever had this problem for multiple files?
 
 No more!
 
@@ -54,7 +54,7 @@ use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
 sub _path    { require Path::Tiny; goto &Path::Tiny::path }
 sub _rootdir { require File::Spec; return File::Spec->rootdir() }
-sub _osroot  { _path(_rootdir)->absolute }
+sub _osroot  { return _path(_rootdir)->absolute }
 
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
@@ -83,7 +83,7 @@ sub _build_find_dev_all {
   return sub {
     my ($path) = @_;
     my $path_o = _path($path)->absolute;
-  flow: {
+  FLOW: {
       debug( 'Checking :' . $path );
       if ( $path_o->stringify eq $root->stringify ) {
         debug('Found OS Root');
@@ -95,7 +95,7 @@ sub _build_find_dev_all {
       }
       debug('Trying ../ ');
       $path_o = $path_o->parent;
-      redo flow;
+      redo FLOW;
     }
     return;
   };
@@ -108,12 +108,46 @@ sub _build_find_dev {
   my $isdev = do {
     my $args = {};
     $args->{set} = $arg->{set} if $arg->{set};
+    ## no critic (ProtectPrivateSubs)
     Path::IsDev->_build_is_dev( 'is_dev', $args );
   };
 
-  return _build_find_dev_all( $class, $name, { %$arg, isdev => $isdev } );
+  return _build_find_dev_all( $class, $name, { %{$arg}, isdev => $isdev } );
 
 }
+
+=func find_dev
+
+    my $result = find_dev('/some/path');
+
+If a C<dev> directory is found at, or above, C</some/path>, it will be returned
+as a L<< C<Path::Tiny>|Path::Tiny >>
+
+If you pass configurations to import:
+
+    use Path::FindDev find_dev => { set => $someset };
+
+Then the exported C<find_dev> will pass that set name to L<< C<Path::IsDev>|Path::IsDev >>.
+
+Though you should only do this if
+
+=over 4
+
+=item * the default set is inadequate for your usage
+
+=item * you don't want the set to be overridden by C<%ENV>
+
+=back
+
+Additionally, you can call find_dev directly:
+
+    require Path::FindDev;
+
+    my $result = Path::FindDev::find_dev('/some/path');
+
+Which by design inhibits your capacity to specify an alternative set in code.
+
+=cut
 
 *find_dev = _build_find_dev( __PACKAGE__, 'find_dev', {} );
 
