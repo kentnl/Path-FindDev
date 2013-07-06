@@ -1,5 +1,5 @@
 ---
-abstract: 'Find a development path somewhere in an upper heirarchy.'
+abstract: 'Find a development path somewhere in an upper hierarchy.'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:

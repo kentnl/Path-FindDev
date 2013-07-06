@@ -12,7 +12,7 @@ my %module_build_args = (
   "configure_requires" => {
     "Module::Build" => "0.4005"
   },
-  "dist_abstract" => "Find a development path somewhere in an upper heirarchy.",
+  "dist_abstract" => "Find a development path somewhere in an upper hierarchy.",
   "dist_author" => [
     "Kent Fredric <kentfredric\@gmail.com>"
   ],

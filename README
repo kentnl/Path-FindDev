@@ -1,5 +1,5 @@
 NAME
-    Path::FindDev - Find a development path somewhere in an upper heirarchy.
+    Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 VERSION
     version 0.1.0
@@ -16,7 +16,17 @@ DESCRIPTION
             print "No development root :(";
         }
 
-EXAMPLE USECASES
+FUNCTIONS
+  "debug"
+    debugging callback:
+
+        debug('some_message') # → '[Path::FindDev] some_message\n'
+
+    To enable debug messages to "STDERR"
+
+        export PATH_FINDDEV_DEBUG=1
+
+EXAMPLE USE-CASES
     Have you ever found yourself doing
 
         use FindBin;
@@ -24,7 +34,7 @@ EXAMPLE USECASES
 
     In a test?
 
-    Have you found yourself paranoid of filesystem semantics and tried
+    Have you found yourself paranoid of file-system semantics and tried
 
         use FindBin;
         use Path::Tiny qw(path)
@@ -34,7 +44,7 @@ EXAMPLE USECASES
     needed to move the test to a deeper hierarchy, and thus, need to
     re-write all your path resolution?
 
-    Have you ever had this problem for mulitple files?
+    Have you ever had this problem for multiple files?
 
     No more!
 
@@ -45,14 +55,6 @@ EXAMPLE USECASES
     ^ Should work, regardless of which test you put it in, and regardless of
     what $CWD happens to be when you call it.
 
-    debugging callback:
-
-        debug('some_message') # → '[Path::FindDev] some_message\n'
-
-    To enable debug messages to "STDERR"
-
-        export PATH_FINDDEV_DEBUG=1
-
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 
@@ -62,11 +64,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 130:
-        Unknown directive: =func
 
