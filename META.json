@@ -44,7 +44,7 @@
       "runtime" : {
          "requires" : {
             "File::Spec" : "0",
-            "Path::IsDev" : "0",
+            "Path::IsDev" : "v0.1.1",
             "Path::Tiny" : "0",
             "Sub::Exporter" : "0",
             "perl" : "v5.10.0",
@@ -393,7 +393,7 @@
                   "type" : "requires"
                }
             },
-            "name" : "Prereqs",
+            "name" : "RuntimeRequires",
             "version" : "4.300035"
          },
          {

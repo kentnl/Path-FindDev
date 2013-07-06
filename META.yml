@@ -23,7 +23,7 @@ provides:
     version: v0.1.0
 requires:
   File::Spec: 0
-  Path::IsDev: 0
+  Path::IsDev: v0.1.1
   Path::Tiny: 0
   Sub::Exporter: 0
   perl: v5.10.0
@@ -284,7 +284,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Prereqs:
           phase: runtime
           type: requires
-      name: Prereqs
+      name: RuntimeRequires
       version: 4.300035
     -
       class: Dist::Zilla::Plugin::FinderCode
