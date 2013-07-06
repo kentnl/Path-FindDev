@@ -1,0 +1,94 @@
+NAME
+    Path::FindDev - Find a development path somewhere in an upper hierarchy.
+
+VERSION
+    version 0.1.0
+
+DESCRIPTION
+    This package is mostly a glue layer around "Path::IsDev" with a few
+    directory walking tricks.
+
+        use Path::FindDev qw( find_dev );
+
+        if ( my $root = find_dev('/some/path/to/something/somewhere')) {
+            print "development root = $root";
+        } else {
+            print "No development root :(";
+        }
+
+FUNCTIONS
+  "debug"
+    debugging callback:
+
+        debug('some_message') # → '[Path::FindDev] some_message\n'
+
+    To enable debug messages to "STDERR"
+
+        export PATH_FINDDEV_DEBUG=1
+
+  find_dev
+        my $result = find_dev('/some/path');
+
+    If a "dev" directory is found at, or above, "/some/path", it will be
+    returned as a "Path::Tiny"
+
+    If you pass configurations to import:
+
+        use Path::FindDev find_dev => { set => $someset };
+
+    Then the exported "find_dev" will pass that set name to "Path::IsDev".
+
+    Though you should only do this if
+
+    *   the default set is inadequate for your usage
+
+    *   you don't want the set to be overridden by %ENV
+
+    Additionally, you can call find_dev directly:
+
+        require Path::FindDev;
+
+        my $result = Path::FindDev::find_dev('/some/path');
+
+    Which by design inhibits your capacity to specify an alternative set in
+    code.
+
+EXAMPLE USE-CASES
+    Have you ever found yourself doing
+
+        use FindBin;
+        use lib "$FindBin::Bin/../../../tlib"
+
+    In a test?
+
+    Have you found yourself paranoid of file-system semantics and tried
+
+        use FindBin;
+        use Path::Tiny qw(path)
+        use lib path($FindBin::Bin)->parent->parent->parent->child('tlib')->stringify;
+
+    Have you ever done either of the above in a test, only to find you've
+    needed to move the test to a deeper hierarchy, and thus, need to
+    re-write all your path resolution?
+
+    Have you ever had this problem for multiple files?
+
+    No more!
+
+        use FindBin;
+        use Path::FindDev qw(find_dev);
+        use lib find_dev($FindBin::Bin)->child('t','tlib')->stringify;
+
+    ^ Should work, regardless of which test you put it in, and regardless of
+    what $CWD happens to be when you call it.
+
+AUTHOR
+    Kent Fredric <kentfredric@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Kent Fredric
+    <kentfredric@gmail.com>.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
