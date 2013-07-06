@@ -40,9 +40,9 @@ FUNCTIONS
 
     Though you should only do this if
 
-    *   the default set is inadequate for your useage
+    *   the default set is inadequate for your usage
 
-    *   you don't want the set to be overriden by %ENV
+    *   you don't want the set to be overridden by %ENV
 
     Additionally, you can call find_dev directly:
 

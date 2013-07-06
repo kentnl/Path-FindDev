@@ -128,9 +128,9 @@ Though you should only do this if
 
 =over 4
 
-=item * the default set is inadequate for your useage
+=item * the default set is inadequate for your usage
 
-=item * you don't want the set to be overriden by C<%ENV>
+=item * you don't want the set to be overridden by C<%ENV>
 
 =back
 
