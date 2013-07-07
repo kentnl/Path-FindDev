@@ -1,6 +1,17 @@
 Release history for Path-FindDev
 
 {{$NEXT}}
+ [00 Major Changes]
+ - Refactored guts of exported symbols in terms of a Moo class.
+
+ [Dependencies::Added / runtime requires]
+ - Carp
+ - Moo
+ - Path::IsDev::Object
+ - Scalar::Util
+
+ [Dependencies::Changed / runtime requires]
+ - Path::IsDev v0.1.1 → v0.2.2
 
 0.1.0 2013-07-06T17:00:16Z
  - First version.
