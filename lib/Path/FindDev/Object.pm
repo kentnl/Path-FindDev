@@ -86,6 +86,7 @@ sub _debug {
 
 sub _error {
   my ($self,$message) = @_;
+  my $id = $self->_instance_id;
   my $f_message = sprintf qq{[Path::FindDev=%s] %s\n}, $id, $message;
   require Carp;
   Carp::croak($f_message);
