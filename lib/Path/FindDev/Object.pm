@@ -10,7 +10,7 @@ BEGIN {
   $Path::FindDev::Object::VERSION = '0.1.1';
 }
 
-# ABSTRACT: Object oriented guts to FindDev
+# ABSTRACT: Object oriented guts to C<FindDev>
 
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
@@ -77,17 +77,18 @@ sub BUILD {
 
 
 sub _debug {
+  my ($self,$message) = @_;
   return unless $DEBUG;
-  my $id = $_[0]->_instance_id;
-  return *STDERR->printf( qq{[Path::FindDev=%s] %s\n}, $id, $_[1] );
+  my $id = $self->_instance_id;
+  return *STDERR->printf( qq{[Path::FindDev=%s] %s\n}, $id, $message );
 }
 
 
 sub _error {
-  my $id = $_[0]->_instance_id;
-  my $message = sprintf( qq{[Path::FindDev=%s] %s\n}, $id, $_[1] );
+  my ($self,$message) = @_;
+  my $f_message = sprintf( qq{[Path::FindDev=%s] %s\n}, $id, $message );
   require Carp;
-  Carp::croak($message);
+  Carp::croak($f_message);
 }
 
 
@@ -147,7 +148,7 @@ __END__
 
 =head1 NAME
 
-Path::FindDev::Object - Object oriented guts to FindDev
+Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
@@ -161,12 +162,12 @@ version 0.1.1
 
 =head1 DESCRIPTION
 
-This module implements the innards of L<Path::FindDev>, and is
-only recommended for use if the Exporter API is insufficient for your needs.
+This module implements the innards of L<< C<Path::FindDev>|Path::FindDev >>, and is
+only recommended for use if the Exporter C<API> is insufficient for your needs.
 
 =head1 METHODS
 
-=head2 find_dev
+=head2 C<find_dev>
 
 Find a parent at, or above C<$OtherPath> that resembles a C<devel> directory.
 
@@ -186,7 +187,7 @@ A Path::Tiny object for C<< File::Spec->rootdir >>
 
 =head2 C<uplevel_max>
 
-If provided, limits the number of uplevel iterations done.
+If provided, limits the number of C<uplevel> iterations done.
 
 ( that is, limits the number of times it will recurse up the hierarchy )
 
@@ -194,8 +195,8 @@ If provided, limits the number of uplevel iterations done.
 
 The the number of C<dev> directories to C<ignore> in the heirarchy.
 
-This is provided in the event you have a C<dev> dir within a C<dev> dir, and you wish
-to resolve an outer dir instead of an inner one.
+This is provided in the event you have a C<dev> directory within a C<dev> directory, and you wish
+to resolve an outer directory instead of an inner one.
 
 By default, this is C<0>, or "stop at the first C<dev> directory"
 
@@ -223,7 +224,7 @@ C<BUILD> is an implementation detail of C<Moo>/C<Moose>.
 This module hooks C<BUILD> to give a self report of the object
 to C<*STDERR> after C<< ->new >> when under C<$DEBUG>
 
-=head2 _debug
+=head2 C<_debug>
 
 The debugger callback.
 
@@ -233,13 +234,13 @@ to get debug info.
 
     $object->_debug($message);
 
-=head2 _error
+=head2 C<_error>
 
 The error reporting callback.
 
     $object->_error($message);
 
-=head2 _step
+=head2 C<_step>
 
 Inner codepath of tree walking.
 
