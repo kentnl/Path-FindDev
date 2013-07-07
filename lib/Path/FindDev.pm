@@ -19,13 +19,13 @@ sub _build_find_dev {
 
   my $object;
   return sub {
-    my ( $path ) = @_;
+    my ($path) = @_;
     $object ||= do {
-        require Path::FindDev::Object;
-        Path::FindDev::Object->new( $arg );
+      require Path::FindDev::Object;
+      Path::FindDev::Object->new($arg);
     };
     return $object->find_dev($path);
-  }
+    }
 }
 
 

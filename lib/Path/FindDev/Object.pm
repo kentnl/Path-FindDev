@@ -77,7 +77,7 @@ sub BUILD {
 
 
 sub _debug {
-  my ($self,$message) = @_;
+  my ( $self, $message ) = @_;
   return unless $DEBUG;
   my $id = $self->_instance_id;
   return *STDERR->printf( qq{[Path::FindDev=%s] %s\n}, $id, $message );
@@ -85,7 +85,7 @@ sub _debug {
 
 
 sub _error {
-  my ($self,$message) = @_;
+  my ( $self, $message ) = @_;
   my $id = $self->_instance_id;
   my $f_message = sprintf qq{[Path::FindDev=%s] %s\n}, $id, $message;
   require Carp;
