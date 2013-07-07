@@ -68,11 +68,11 @@
    "provides" : {
       "Path::FindDev" : {
          "file" : "lib/Path/FindDev.pm",
-         "version" : "v0.1.1"
+         "version" : "v0.2.0"
       },
       "Path::FindDev::Object" : {
          "file" : "lib/Path/FindDev/Object.pm",
-         "version" : "v0.1.1"
+         "version" : "v0.2.0"
       }
    },
    "release_status" : "stable",
@@ -87,7 +87,7 @@
          "web" : "https://github.com/kentfredric/Path-FindDev"
       }
    },
-   "version" : "0.1.1",
+   "version" : "0.2.0",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.29",
