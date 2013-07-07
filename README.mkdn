@@ -4,7 +4,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 # VERSION
 
-version 0.1.0
+version 0.1.1
 
 # DESCRIPTION
 
@@ -20,16 +20,6 @@ with a few directory walking tricks.
     }
 
 # FUNCTIONS
-
-## `debug`
-
-debugging callback:
-
-    debug('some_message') # → '[Path::FindDev] some_message\n'
-
-To enable debug messages to `STDERR`
-
-    export PATH_FINDDEV_DEBUG=1
 
 ## find\_dev
 
