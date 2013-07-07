@@ -46,7 +46,7 @@
             "Carp" : "0",
             "File::Spec" : "0",
             "Moo" : "0",
-            "Path::IsDev" : "v0.1.1",
+            "Path::IsDev" : "v0.2.2",
             "Path::IsDev::Object" : "0",
             "Path::Tiny" : "0",
             "Scalar::Util" : "0",
