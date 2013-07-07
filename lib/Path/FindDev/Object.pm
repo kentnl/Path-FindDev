@@ -19,7 +19,7 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 use Moo;
 
 
-has 'set' => ( is => ro =>, predicate => 'has_set' );
+has 'set' => ( is => ro =>, predicate => 'has_set', );
 
 
 has 'os_root' => (
@@ -29,14 +29,14 @@ has 'os_root' => (
     require File::Spec;
     require Path::Tiny;
     return Path::Tiny::path( File::Spec->rootdir() )->absolute;
-  }
+  },
 );
 
 
-has 'uplevel_max' => ( is => ro =>, lazy => 1, predicate => 'has_uplevel_max' );
+has 'uplevel_max' => ( is => ro =>, lazy => 1, predicate => 'has_uplevel_max', );
 
 
-has 'nest_retry' => ( is => ro =>, lazy => 1, builder => sub { 0 } );
+has 'nest_retry' => ( is => ro =>, lazy => 1, builder => sub { 0 }, );
 
 
 has 'isdev' => (
@@ -45,7 +45,7 @@ has 'isdev' => (
   builder => sub {
     require Path::IsDev::Object;
     return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
-  }
+  },
 );
 
 my $instances   = {};
@@ -86,7 +86,7 @@ sub _debug {
 
 sub _error {
   my ($self,$message) = @_;
-  my $f_message = sprintf( qq{[Path::FindDev=%s] %s\n}, $id, $message );
+  my $f_message = sprintf qq{[Path::FindDev=%s] %s\n}, $id, $message;
   require Carp;
   Carp::croak($f_message);
 }
@@ -193,7 +193,7 @@ If provided, limits the number of C<uplevel> iterations done.
 
 =head2 C<nest_retry>
 
-The the number of C<dev> directories to C<ignore> in the heirarchy.
+The the number of C<dev> directories to C<ignore> in the hierarchy.
 
 This is provided in the event you have a C<dev> directory within a C<dev> directory, and you wish
 to resolve an outer directory instead of an inner one.
