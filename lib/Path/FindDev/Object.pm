@@ -9,6 +9,18 @@ package Path::FindDev::Object;
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev::Object",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+=end MetaPOD::JSON
+
+=cut
+
 =head1 DESCRIPTION
 
 This module implements the innards of L<< C<Path::FindDev>|Path::FindDev >>, and is

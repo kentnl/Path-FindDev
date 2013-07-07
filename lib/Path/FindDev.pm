@@ -52,6 +52,17 @@ of what C<$CWD> happens to be when you call it.
 
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev",
+    "interface":"exporter"
+}
+
+=end MetaPOD::JSON
+
+=cut
+
 sub _build_find_dev {
   my ( $class, $name, $arg ) = @_;
 
