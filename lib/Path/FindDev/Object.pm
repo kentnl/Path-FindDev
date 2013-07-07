@@ -119,7 +119,7 @@ sub find_dev {
   my $search_root = Path::Tiny::path($path)->absolute;
   $self->_debug( 'Finding dev for ' . $path );
   my $dev_levels = 0;
-  my $uplevels   = -1;
+  my $uplevels   = 0 - 1;
 FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
@@ -189,7 +189,7 @@ A Path::Tiny object for C<< File::Spec->rootdir >>
 
 If provided, limits the number of C<uplevel> iterations done.
 
-( that is, limits the number of times it will recurse up the hierarchy )
+( that is, limits the number of times it will step up the hierarchy )
 
 =head2 C<nest_retry>
 
@@ -242,7 +242,7 @@ The error reporting callback.
 
 =head2 C<_step>
 
-Inner codepath of tree walking.
+Inner code path of tree walking.
 
     my ($dev_levels, $uplevels ) = (0,0);
 
