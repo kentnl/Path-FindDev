@@ -43,9 +43,8 @@
       },
       "runtime" : {
          "requires" : {
-            "File::Spec" : "0",
+            "Path::FindDev::Object" : "0",
             "Path::IsDev" : "v0.1.1",
-            "Path::Tiny" : "0",
             "Sub::Exporter" : "0",
             "perl" : "v5.10.0",
             "strict" : "0",
@@ -57,6 +56,7 @@
             "File::Find" : "0",
             "File::Temp" : "0",
             "FindBin" : "0",
+            "Path::Tiny" : "0",
             "Test::More" : "0.98"
          }
       }
@@ -85,11 +85,11 @@
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.7.4",
          "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "NA(possibly not installed)",
          "File::Find" : "1.23",
-         "File::Spec" : "3.40",
          "File::Temp" : "0.2301",
          "FindBin" : "1.51",
          "Module::Build" : "0.4005",
-         "Path::IsDev" : "0.1.1",
+         "Path::FindDev::Object" : "NA(possibly not installed)",
+         "Path::IsDev" : "0.2.2",
          "Path::Tiny" : "0.024",
          "Pod::Coverage::TrustPod" : "0.100002",
          "Sub::Exporter" : "0.986",

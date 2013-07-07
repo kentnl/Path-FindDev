@@ -51,10 +51,10 @@ sub pmver {
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL','v1.7.4') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL::Lite','v1.3.0') };
 eval { $v .= pmver('File::Find','any version') };
-eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('File::Temp','any version') };
 eval { $v .= pmver('FindBin','any version') };
 eval { $v .= pmver('Module::Build','0.4005') };
+eval { $v .= pmver('Path::FindDev::Object','any version') };
 eval { $v .= pmver('Path::IsDev','v0.1.1') };
 eval { $v .= pmver('Path::Tiny','any version') };
 eval { $v .= pmver('Pod::Coverage::TrustPod','any version') };

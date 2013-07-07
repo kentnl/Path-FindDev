@@ -23,9 +23,8 @@ my %module_build_args = (
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "File::Spec" => 0,
+    "Path::FindDev::Object" => 0,
     "Path::IsDev" => "v0.1.1",
-    "Path::Tiny" => 0,
     "Sub::Exporter" => 0,
     "perl" => "v5.10.0",
     "strict" => 0,
@@ -36,6 +35,7 @@ my %module_build_args = (
     "File::Find" => 0,
     "File::Temp" => 0,
     "FindBin" => 0,
+    "Path::Tiny" => 0,
     "Test::More" => "0.98"
   }
 );
