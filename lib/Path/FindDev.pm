@@ -6,7 +6,7 @@ BEGIN {
   $Path::FindDev::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::VERSION = '0.1.0';
+  $Path::FindDev::VERSION = '0.2.0';
 }
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
@@ -14,57 +14,18 @@ BEGIN {
 
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
-sub _path    { require Path::Tiny; goto &Path::Tiny::path }
-sub _rootdir { require File::Spec; return File::Spec->rootdir() }
-sub _osroot  { return _path(_rootdir)->absolute }
-
-our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
-our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
-
-
-sub debug {
-  return unless $DEBUG;
-  return *STDERR->printf( qq{[Path::FindDev] %s\n}, shift );
-}
-
-sub _build_find_dev_all {
-  my ( $class, $name, $arg ) = @_;
-  my $isdev = $arg->{isdev};
-  my $root  = _osroot;
-  return sub {
-    my ($path) = @_;
-    my $path_o = _path($path)->absolute;
-  FLOW: {
-      debug( 'Checking :' . $path );
-      if ( $path_o->stringify eq $root->stringify ) {
-        debug('Found OS Root');
-        return;
-      }
-      if ( $isdev->($path_o) ) {
-        debug( 'Found dev dir ' . $path_o );
-        return $path_o;
-      }
-      debug('Trying ../ ');
-      $path_o = $path_o->parent;
-      redo FLOW;
-    }
-    return;
-  };
-}
-
 sub _build_find_dev {
   my ( $class, $name, $arg ) = @_;
 
-  require Path::IsDev;
-  my $isdev = do {
-    my $args = {};
-    $args->{set} = $arg->{set} if $arg->{set};
-    ## no critic (ProtectPrivateSubs)
-    Path::IsDev->_build_is_dev( 'is_dev', $args );
-  };
-
-  return _build_find_dev_all( $class, $name, { %{$arg}, isdev => $isdev } );
-
+  my $object;
+  return sub {
+    my ($path) = @_;
+    $object ||= do {
+      require Path::FindDev::Object;
+      Path::FindDev::Object->new($arg);
+    };
+    return $object->find_dev($path);
+    }
 }
 
 
@@ -84,7 +45,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.1.0
+version 0.2.0
 
 =head1 DESCRIPTION
 
@@ -100,16 +61,6 @@ with a few directory walking tricks.
     }
 
 =head1 FUNCTIONS
-
-=head2 C<debug>
-
-debugging callback:
-
-    debug('some_message') # → '[Path::FindDev] some_message\n'
-
-To enable debug messages to C<STDERR>
-
-    export PATH_FINDDEV_DEBUG=1
 
 =head2 find_dev
 

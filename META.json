@@ -43,9 +43,13 @@
       },
       "runtime" : {
          "requires" : {
+            "Carp" : "0",
             "File::Spec" : "0",
-            "Path::IsDev" : "v0.1.1",
+            "Moo" : "0",
+            "Path::IsDev" : "v0.2.2",
+            "Path::IsDev::Object" : "0",
             "Path::Tiny" : "0",
+            "Scalar::Util" : "0",
             "Sub::Exporter" : "0",
             "perl" : "v5.10.0",
             "strict" : "0",
@@ -64,7 +68,11 @@
    "provides" : {
       "Path::FindDev" : {
          "file" : "lib/Path/FindDev.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
+      },
+      "Path::FindDev::Object" : {
+         "file" : "lib/Path/FindDev/Object.pm",
+         "version" : "v0.2.0"
       }
    },
    "release_status" : "stable",
@@ -79,9 +87,10 @@
          "web" : "https://github.com/kentfredric/Path-FindDev"
       }
    },
-   "version" : "0.1.0",
+   "version" : "0.2.0",
    "x_BuiltWith" : {
       "modules" : {
+         "Carp" : "1.29",
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.7.4",
          "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "NA(possibly not installed)",
          "File::Find" : "1.23",
@@ -89,9 +98,12 @@
          "File::Temp" : "0.2301",
          "FindBin" : "1.51",
          "Module::Build" : "0.4005",
-         "Path::IsDev" : "0.1.1",
+         "Moo" : "1.002",
+         "Path::IsDev" : "0.2.2",
+         "Path::IsDev::Object" : "0.2.2",
          "Path::Tiny" : "0.024",
          "Pod::Coverage::TrustPod" : "0.100002",
+         "Scalar::Util" : "1.27",
          "Sub::Exporter" : "0.986",
          "Test::CPAN::Changes" : "0.20",
          "Test::CPAN::Meta" : "0.23",
