@@ -4,7 +4,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 # VERSION
 
-version 0.2.0
+version 0.2.1
 
 # DESCRIPTION
 
@@ -76,6 +76,13 @@ No more!
 
 ^ Should work, regardless of which test you put it in, and regardless
 of what `$CWD` happens to be when you call it.
+
+{
+    "namespace":"Path::FindDev",
+    "interface":"exporter"
+}
+
+
 
 # AUTHOR
 
