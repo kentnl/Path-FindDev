@@ -7,13 +7,14 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.2.0';
+  $Path::FindDev::Object::VERSION = '0.2.1';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
 
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
+
 
 
 use Moo;
@@ -153,7 +154,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 SYNOPSIS
 
@@ -252,6 +253,17 @@ Inner code path of tree walking.
     $result->{type} eq 'stop'   # if flow control should end
     $result->{type} eq 'next'   # if flow control should ascend to parent
     $result->{type} eq 'found'  # if flow control has found the "final" dev directory
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev::Object",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

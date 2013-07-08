@@ -7,6 +7,8 @@ META.json
 META.yml
 README
 dist.ini
+layout/self_structure.dot
+layout/self_structure.png
 lib/Path/FindDev.pm
 lib/Path/FindDev/Object.pm
 perlcritic.rc
