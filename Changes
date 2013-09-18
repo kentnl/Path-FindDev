@@ -4,6 +4,9 @@ Release history for Path-FindDev
  [00 Major Changes]
  - Implemented in Class::Tiny instead, which is faster to install
 
+ [00 Minor Changes]
+ - MetaPOD info in dist.
+
  [Dependencies::Added / develop requires]
  - Test::Kwalitee 1.08
 
