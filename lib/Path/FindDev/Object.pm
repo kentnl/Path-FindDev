@@ -57,6 +57,14 @@ The C<Path::IsDev::HeuristicSet> subclass for your desired Heuristics.
 
 =cut
 
+## no critic (RequireArgUnpacking)
+
+=method C<has_set>
+
+Determines if the C<set> attribute exists
+
+=cut
+
 sub has_set { return exists $_[0]->{set} }
 
 =attr C<os_root>
@@ -70,6 +78,12 @@ A Path::Tiny object for C<< File::Spec->rootdir >>
 If provided, limits the number of C<uplevel> iterations done.
 
 ( that is, limits the number of times it will step up the hierarchy )
+
+=cut
+
+=method C<has_uplevel_max>
+
+Determines if the C<uplevel_max> attribute is provided.
 
 =cut
 
