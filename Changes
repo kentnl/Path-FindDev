@@ -1,6 +1,6 @@
 Release history for Path-FindDev
 
-0.3.0 2013-09-18T03:05:46Z
+0.3.0 2013-09-18T03:06:21Z
  [00 Major Changes]
  - Implemented in Class::Tiny instead, which is faster to install
 
