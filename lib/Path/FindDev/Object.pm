@@ -7,7 +7,7 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.2.1';
+  $Path::FindDev::Object::VERSION = '0.3.0';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
@@ -146,7 +146,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.2.1
+version 0.3.0
 
 =head1 SYNOPSIS
 
