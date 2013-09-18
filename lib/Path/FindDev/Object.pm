@@ -14,7 +14,7 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 {
     "namespace":"Path::FindDev::Object",
     "interface":"class",
-    "inherits":"Moo::Object"
+    "inherits":"Class::Tiny::Object"
 }
 
 =end MetaPOD::JSON
@@ -34,7 +34,20 @@ only recommended for use if the Exporter C<API> is insufficient for your needs.
 
 =cut
 
-use Moo;
+use Class::Tiny 0.005 'set', 'uplevel_max', {
+  os_root => sub {
+    require File::Spec;
+    require Path::Tiny;
+    return Path::Tiny::path( File::Spec->rootdir() )->absolute;
+  },
+  nest_retry => sub {
+    return 0;
+  },
+  isdev => sub {
+    require Path::IsDev::Object;
+    return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
+  },
+};
 
 =attr C<set>
 
@@ -44,23 +57,13 @@ The C<Path::IsDev::HeuristicSet> subclass for your desired Heuristics.
 
 =cut
 
-has 'set' => ( is => ro =>, predicate => 'has_set', );
+sub has_set { return exists $_[0]->{set} }
 
 =attr C<os_root>
 
 A Path::Tiny object for C<< File::Spec->rootdir >>
 
 =cut
-
-has 'os_root' => (
-  is      => ro =>,
-  lazy    => 1,
-  builder => sub {
-    require File::Spec;
-    require Path::Tiny;
-    return Path::Tiny::path( File::Spec->rootdir() )->absolute;
-  },
-);
 
 =attr C<uplevel_max>
 
@@ -70,7 +73,7 @@ If provided, limits the number of C<uplevel> iterations done.
 
 =cut
 
-has 'uplevel_max' => ( is => ro =>, lazy => 1, predicate => 'has_uplevel_max', );
+sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
 
 =attr C<nest_retry>
 
@@ -83,22 +86,11 @@ By default, this is C<0>, or "stop at the first C<dev> directory"
 
 =cut
 
-has 'nest_retry' => ( is => ro =>, lazy => 1, builder => sub { 0 }, );
-
 =attr C<isdev>
 
 The L<< C<Path::IsDev>|Path::IsDev >> object that checks nodes for C<dev>-ishness.
 
 =cut
-
-has 'isdev' => (
-  is      => ro =>,
-  lazy    => 1,
-  builder => sub {
-    require Path::IsDev::Object;
-    return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
-  },
-);
 
 my $instances   = {};
 my $instance_id = 0;
