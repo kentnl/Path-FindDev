@@ -7,7 +7,7 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.2.0';
+  $Path::FindDev::Object::VERSION = '0.3.0';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
@@ -16,37 +16,34 @@ our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
 
-use Moo;
 
-
-has 'set' => ( is => ro =>, predicate => 'has_set', );
-
-
-has 'os_root' => (
-  is      => ro =>,
-  lazy    => 1,
-  builder => sub {
+use Class::Tiny 0.005 'set', 'uplevel_max', {
+  os_root => sub {
     require File::Spec;
     require Path::Tiny;
     return Path::Tiny::path( File::Spec->rootdir() )->absolute;
   },
-);
-
-
-has 'uplevel_max' => ( is => ro =>, lazy => 1, predicate => 'has_uplevel_max', );
-
-
-has 'nest_retry' => ( is => ro =>, lazy => 1, builder => sub { 0 }, );
-
-
-has 'isdev' => (
-  is      => ro =>,
-  lazy    => 1,
-  builder => sub {
+  nest_retry => sub {
+    return 0;
+  },
+  isdev => sub {
     require Path::IsDev::Object;
     return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
   },
-);
+};
+
+
+## no critic (RequireArgUnpacking)
+
+
+sub has_set { return exists $_[0]->{set} }
+
+
+
+
+sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
+
+
 
 my $instances   = {};
 my $instance_id = 0;
@@ -153,7 +150,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.2.0
+version 0.3.0
 
 =head1 SYNOPSIS
 
@@ -167,6 +164,14 @@ This module implements the innards of L<< C<Path::FindDev>|Path::FindDev >>, and
 only recommended for use if the Exporter C<API> is insufficient for your needs.
 
 =head1 METHODS
+
+=head2 C<has_set>
+
+Determines if the C<set> attribute exists
+
+=head2 C<has_uplevel_max>
+
+Determines if the C<uplevel_max> attribute is provided.
 
 =head2 C<find_dev>
 
@@ -252,6 +257,17 @@ Inner code path of tree walking.
     $result->{type} eq 'stop'   # if flow control should end
     $result->{type} eq 'next'   # if flow control should ascend to parent
     $result->{type} eq 'found'  # if flow control has found the "final" dev directory
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev::Object",
+    "interface":"class",
+    "inherits":"Class::Tiny::Object"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

@@ -1,4 +1,5 @@
 .perltidyrc
+.travis.yml
 Build.PL
 Changes
 LICENSE
@@ -7,8 +8,15 @@ META.json
 META.yml
 README
 dist.ini
+layout/self_structure.dot
+layout/self_structure.png
 lib/Path/FindDev.pm
 lib/Path/FindDev/Object.pm
+maint-travis-ci/README.mkdn
+maint-travis-ci/merge_travis_yml.pl
+maint-travis-ci/sterilize_env.pl
+maint-travis-ci/sync_tree.pl
+maint-travis-ci/yamls/sterile.yaml
 perlcritic.rc
 t/00-compile.t
 t/000-report-versions-tiny.t

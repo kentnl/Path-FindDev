@@ -6,13 +6,14 @@ BEGIN {
   $Path::FindDev::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::VERSION = '0.2.0';
+  $Path::FindDev::VERSION = '0.3.0';
 }
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
 
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
+
 
 sub _build_find_dev {
   my ( $class, $name, $arg ) = @_;
@@ -45,7 +46,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.2.0
+version 0.3.0
 
 =head1 DESCRIPTION
 
@@ -122,6 +123,16 @@ No more!
 
 ^ Should work, regardless of which test you put it in, and regardless
 of what C<$CWD> happens to be when you call it.
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev",
+    "interface":"exporter"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

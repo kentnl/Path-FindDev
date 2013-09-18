@@ -7,25 +7,25 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Module::Build" => "0.4005"
+    "Module::Build" => "0.4007"
   },
   "configure_requires" => {
-    "Module::Build" => "0.4005"
+    "Module::Build" => "0.4007"
   },
   "dist_abstract" => "Find a development path somewhere in an upper hierarchy.",
   "dist_author" => [
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Path-FindDev",
-  "dist_version" => "0.2.0",
+  "dist_version" => "0.3.0",
   "license" => "perl",
   "module_name" => "Path::FindDev",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Carp" => 0,
+    "Class::Tiny" => "0.005",
     "File::Spec" => 0,
-    "Moo" => 0,
     "Path::IsDev" => "v0.2.2",
     "Path::IsDev::Object" => 0,
     "Path::Tiny" => 0,
@@ -37,9 +37,9 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
-    "File::Find" => 0,
-    "File::Temp" => 0,
     "FindBin" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Test::More" => "0.98"
   }
 );
