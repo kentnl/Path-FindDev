@@ -20,10 +20,10 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.3.0
+    version: v0.2.1
   Path::FindDev::Object:
     file: lib/Path/FindDev/Object.pm
-    version: v0.3.0
+    version: v0.2.1
 requires:
   Carp: 0
   Class::Tiny: 0.005
@@ -40,7 +40,7 @@ resources:
   bugtracker: https://github.com/kentfredric/Path-FindDev/issues
   homepage: https://github.com/kentfredric/Path-FindDev
   repository: https://github.com/kentfredric/Path-FindDev.git
-version: 0.3.0
+version: 0.2.1
 x_BuiltWith:
   modules:
     Carp: 1.32
