@@ -20,13 +20,13 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.3.0
+    version: v0.3.1
   Path::FindDev::Object:
     file: lib/Path/FindDev/Object.pm
-    version: v0.3.0
+    version: v0.3.1
 requires:
   Carp: 0
-  Class::Tiny: 0.005
+  Class::Tiny: 0.010
   File::Spec: 0
   Path::IsDev: v0.2.2
   Path::IsDev::Object: 0
@@ -40,11 +40,11 @@ resources:
   bugtracker: https://github.com/kentfredric/Path-FindDev/issues
   homepage: https://github.com/kentfredric/Path-FindDev
   repository: https://github.com/kentfredric/Path-FindDev.git
-version: 0.3.0
+version: 0.3.1
 x_BuiltWith:
   modules:
     Carp: 1.32
-    Class::Tiny: 0.009
+    Class::Tiny: 0.010
     Dist::Zilla::PluginBundle::Author::KENTNL: 1.8.3
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 1.7.2
     File::Spec: 3.44
@@ -52,8 +52,8 @@ x_BuiltWith:
     IO::Handle: 1.35
     IPC::Open3: 1.15
     Module::Build: 0.4007
-    Path::IsDev: 0.3.0
-    Path::IsDev::Object: 0.3.0
+    Path::IsDev: 0.3.1
+    Path::IsDev::Object: 0.3.1
     Path::Tiny: 0.033
     Pod::Coverage::TrustPod: 0.100002
     Scalar::Util: 1.32
