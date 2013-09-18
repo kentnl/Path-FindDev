@@ -34,7 +34,7 @@ only recommended for use if the Exporter C<API> is insufficient for your needs.
 
 =cut
 
-use Class::Tiny 0.005 'set', 'uplevel_max', {
+use Class::Tiny 0.010 'set', 'uplevel_max', {
   os_root => sub {
     require File::Spec;
     require Path::Tiny;
