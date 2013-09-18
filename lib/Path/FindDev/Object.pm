@@ -17,37 +17,29 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
 
 
-use Moo;
-
-
-has 'set' => ( is => ro =>, predicate => 'has_set', );
-
-
-has 'os_root' => (
-  is      => ro =>,
-  lazy    => 1,
-  builder => sub {
+use Class::Tiny 0.005 'set', 'uplevel_max', {
+  os_root => sub {
     require File::Spec;
     require Path::Tiny;
     return Path::Tiny::path( File::Spec->rootdir() )->absolute;
   },
-);
-
-
-has 'uplevel_max' => ( is => ro =>, lazy => 1, predicate => 'has_uplevel_max', );
-
-
-has 'nest_retry' => ( is => ro =>, lazy => 1, builder => sub { 0 }, );
-
-
-has 'isdev' => (
-  is      => ro =>,
-  lazy    => 1,
-  builder => sub {
+  nest_retry => sub {
+    return 0;
+  },
+  isdev => sub {
     require Path::IsDev::Object;
     return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
   },
-);
+};
+
+
+sub has_set { return exists $_[0]->{set} }
+
+
+
+sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
+
+
 
 my $instances   = {};
 my $instance_id = 0;
@@ -259,7 +251,7 @@ Inner code path of tree walking.
 {
     "namespace":"Path::FindDev::Object",
     "interface":"class",
-    "inherits":"Moo::Object"
+    "inherits":"Class::Tiny::Object"
 }
 
 
