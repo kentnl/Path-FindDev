@@ -1,6 +1,6 @@
 Release history for Path-FindDev
 
-0.3.1 2013-09-18T17:52:09Z
+0.3.1 2013-09-18T17:52:52Z
  [Bugfix]
  - Use Class::Tiny without 'used only once'
 
