@@ -33,7 +33,11 @@ use Class::Tiny 0.005 'set', 'uplevel_max', {
 };
 
 
+## no critic (RequireArgUnpacking)
+
+
 sub has_set { return exists $_[0]->{set} }
+
 
 
 
@@ -160,6 +164,14 @@ This module implements the innards of L<< C<Path::FindDev>|Path::FindDev >>, and
 only recommended for use if the Exporter C<API> is insufficient for your needs.
 
 =head1 METHODS
+
+=head2 C<has_set>
+
+Determines if the C<set> attribute exists
+
+=head2 C<has_uplevel_max>
+
+Determines if the C<uplevel_max> attribute is provided.
 
 =head2 C<find_dev>
 
