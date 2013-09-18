@@ -7,7 +7,7 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.3.0';
+  $Path::FindDev::Object::VERSION = '0.3.1';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
@@ -17,7 +17,7 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
 
 
-use Class::Tiny 0.005 'set', 'uplevel_max', {
+use Class::Tiny 0.010 'set', 'uplevel_max', {
   os_root => sub {
     require File::Spec;
     require Path::Tiny;
@@ -150,7 +150,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.3.0
+version 0.3.1
 
 =head1 SYNOPSIS
 

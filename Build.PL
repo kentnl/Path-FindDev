@@ -17,14 +17,14 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Path-FindDev",
-  "dist_version" => "0.3.0",
+  "dist_version" => "0.3.1",
   "license" => "perl",
   "module_name" => "Path::FindDev",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Carp" => 0,
-    "Class::Tiny" => "0.005",
+    "Class::Tiny" => "0.010",
     "File::Spec" => 0,
     "Path::IsDev" => "v0.2.2",
     "Path::IsDev::Object" => 0,

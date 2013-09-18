@@ -2,7 +2,7 @@ NAME
     Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 VERSION
-    version 0.3.0
+    version 0.3.1
 
 DESCRIPTION
     This package is mostly a glue layer around "Path::IsDev" with a few
