@@ -1,6 +1,8 @@
 Release history for Path-FindDev
 
 {{$NEXT}}
+
+0.3.2 2013-09-26T07:21:34Z
  [Bugfix]
  - use a less broken Test::Compile for Win32 folk
 
