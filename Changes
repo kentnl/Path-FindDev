@@ -1,6 +1,11 @@
 Release history for Path-FindDev
 
 {{$NEXT}}
+ [Bugfix]
+ - use a less broken Test::Compile for Win32 folk
+
+ [Dependencies::Added / test requires]
+ - File::Spec
 
 0.3.1 2013-09-18T18:28:55Z
  [Bugfix]
