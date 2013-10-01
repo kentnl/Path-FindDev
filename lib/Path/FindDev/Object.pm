@@ -24,6 +24,9 @@ use Class::Tiny 0.010 'set', 'uplevel_max', {
     require Path::IsDev::Object;
     return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
   },
+  visit_cache => sub {
+      return {};
+  },
 };
 
 
@@ -35,6 +38,7 @@ sub has_set { return exists $_[0]->{set} }
 
 
 sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
+
 
 
 
@@ -81,6 +85,19 @@ sub _error {
   Carp::croak($f_message);
 }
 
+sub _has_visited {
+    my ( $self, $path ) = @_;
+    if ( exists $self->vist_cache->{ $path->absolute->stringify } ) {
+        return 1;
+    }
+    return;
+}
+sub _set_visit {
+    my ( $self, $path , $value ) = @_;
+    $self->vist_cache->{ $path->absolute->stringify } = $value;
+    return $value;
+}
+
 
 sub _step {
   my ( $self, $search_root, $dev_levels, $uplevels ) = @_;
@@ -89,9 +106,9 @@ sub _step {
     $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
     return { type => 'stop' };
   }
-  if ( $search_root->absolute->dirname eq q[/] and $search_root->absolute->basename eq '' ) {
-    $self->_debug('Found OS Root ( dirname = /  and basename = empty )');
-    return { type => 'stop' };
+  if ( $self->_has_visited( $search_root ) ) {
+      $self->_debug('Found already visited path, assuming root has been hit');
+      return { type => 'stop' };
   }
   if ( $self->isdev->matches($search_root) ) {
     $self->_debug( 'Found dev dir' . $search_root );
@@ -197,6 +214,10 @@ By default, this is C<0>, or "stop at the first C<dev> directory"
 =head2 C<isdev>
 
 The L<< C<Path::IsDev>|Path::IsDev >> object that checks nodes for C<dev>-ishness.
+
+=head2 C<visit_cache>
+
+A cache of paths visited and tested for C<dev>-ishness.
 
 =head1 PRIVATE METHODS
 
