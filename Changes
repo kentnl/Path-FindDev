@@ -1,6 +1,12 @@
 Release history for Path-FindDev
 
-0.3.3 2013-10-01T16:38:07Z
+0.3.3 2013-10-01T18:07:11Z
+ [00 API Backwards Incompatible Changes]
+ - os_root property no longer exists, as is no longer required internally
+
+ [Bugfixes]
+ - Minor typo in POD ( Thanks David Steinbrunner )
+ - Uplevel mechanism bugged on Win32, thanks zdm for reporting
 
 0.3.2 2013-09-26T07:21:34Z
  [Bugfix]

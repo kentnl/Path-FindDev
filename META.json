@@ -97,8 +97,8 @@
          "IO::Handle" : "1.35",
          "IPC::Open3" : "1.15",
          "Module::Build" : "0.4007",
-         "Path::IsDev" : "0.3.3",
-         "Path::IsDev::Object" : "0.3.3",
+         "Path::IsDev" : "0.4.0",
+         "Path::IsDev::Object" : "0.4.0",
          "Path::Tiny" : "0.037",
          "Pod::Coverage::TrustPod" : "0.100002",
          "Scalar::Util" : "1.32",
@@ -148,7 +148,7 @@
          {
             "class" : "Dist::Zilla::Plugin::GithubMeta",
             "name" : "@Author::KENTNL/GithubMeta",
-            "version" : "0.38"
+            "version" : "0.42"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
@@ -408,7 +408,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Twitter",
             "name" : "@Author::KENTNL/Twitter",
-            "version" : "0.021"
+            "version" : "0.022"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs::MatchInstalled",

@@ -1,4 +1,3 @@
-
 use strict;
 use warnings;
 
@@ -58,7 +57,6 @@ sub BUILD {
   return $self unless $DEBUG;
   $self->_debug('{');
   $self->_debug( '  set         => ' . $self->set ) if $self->has_set;
-  $self->_debug( '  os_root     => ' . $self->os_root );
   $self->_debug( '  uplevel_max => ' . $self->uplevel_max ) if $self->uplevel_max;
   $self->_debug( '  nest_retry  => ' . $self->nest_retry );
   $self->_debug( '  isdev       => ' . $self->isdev );
@@ -189,7 +187,7 @@ If provided, limits the number of C<uplevel> iterations done.
 
 =head2 C<nest_retry>
 
-The the number of C<dev> directories to C<ignore> in the hierarchy.
+The number of C<dev> directories to C<ignore> in the hierarchy.
 
 This is provided in the event you have a C<dev> directory within a C<dev> directory, and you wish
 to resolve an outer directory instead of an inner one.
