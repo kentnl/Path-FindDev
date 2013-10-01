@@ -132,7 +132,7 @@ sub BUILD {
   my ($self) = @_;
   return $self unless $DEBUG;
   $self->_debug('{');
-  $self->_debug( '  set         => ' . $self->set ) if $self->has_set;
+  $self->_debug( '  set         => ' . $self->set )         if $self->has_set;
   $self->_debug( '  uplevel_max => ' . $self->uplevel_max ) if $self->uplevel_max;
   $self->_debug( '  nest_retry  => ' . $self->nest_retry );
   $self->_debug( '  isdev       => ' . $self->isdev );
@@ -193,20 +193,21 @@ Inner code path of tree walking.
 sub _step {
   my ( $self, $search_root, $dev_levels, $uplevels ) = @_;
 
-  if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
-    $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
-    return { type => 'stop' };
-  }
-  if ( $search_root->absolute->dirname eq q[/] ) {
-    $self->_debug('Found OS Root ( dirname = / )');
-    return { type => 'stop' };
-  }
   if ( $self->isdev->matches($search_root) ) {
     $self->_debug( 'Found dev dir' . $search_root );
     ${$dev_levels}++;
     return { type => 'found', path => $search_root } if ${$dev_levels} >= $self->nest_retry;
     $self->_debug( sprintf 'Ignoring found dev dir due to dev_levels(%s) < nest_retry(%s)', ${$dev_levels}, $self->nest_retry );
   }
+  if ( $search_root->is_rootdir ) {
+    $self->_debug('OS Root hit ( ->is_rootdir )');
+    return { type => 'stop' };
+  }
+  if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
+    $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
+    return { type => 'stop' };
+  }
+
   return { type => 'next' };
 }
 
@@ -221,7 +222,7 @@ Find a parent at, or above C<$OtherPath> that resembles a C<devel> directory.
 sub find_dev {
   my ( $self, $path ) = @_;
   require Path::Tiny;
-  my $search_root = Path::Tiny::path($path)->absolute;
+  my $search_root = Path::Tiny::path($path)->absolute->realpath;
   $self->_debug( 'Finding dev for ' . $path );
   my $dev_levels = 0;
   my $uplevels   = 0 - 1;
@@ -229,7 +230,7 @@ FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
     if ( $result->{type} eq 'next' ) {
-      $self->_debug('Trying ../');
+      $self->_debug( 'Trying ../ : ' . $search_root->parent );
       $search_root = $search_root->parent;
       redo FLOW;
     }
