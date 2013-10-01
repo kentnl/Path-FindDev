@@ -18,8 +18,14 @@ sub cmp_paths {
 }
 cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
+my $outside_path = path($FindBin::Bin)->parent;
+
+if ( $outside_path->parent->basename eq '.build' ) {
+    $outside_path = $outside_path->parent->parent;
+}
+
 if (
-  not is( find_dev( path($FindBin::Bin)->parent->parent ), undef,
+  not is( find_dev( $outside_path ), undef,
     'Finding a dev directory above the project directory should miss' ) )
 {
   no warnings 'once';
