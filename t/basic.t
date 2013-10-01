@@ -18,5 +18,17 @@ sub cmp_paths {
 }
 cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
+if (
+  not is( find_dev( path($FindBin::Bin)->parent->parent ), undef,
+    'Finding a dev directory above the project directory should miss' ) )
+{
+  no warnings 'once';
+  local $Path::IsDev::Object::DEBUG   = 1;
+  local $Path::FindDev::Object::DEBUG = 1;
+  diag "As the previous test failed, debug diagnosics for Path::IsDev are being turned on";
+  diag "These will hopefully tell you what warts your filesystem has that results in false-postives for dev dirs";
+
+  find_dev( path($FindBin::Bin)->parent->parent );
+}
 done_testing;
 
