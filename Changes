@@ -1,5 +1,51 @@
 Release history for Path-FindDev
 
+0.4.0 2013-10-01T22:51:43Z
+ [00 API Backwards Incompatible Changes]
+ - os_root property no longer exists, as is no longer required internally
+
+ [Bugfixes]
+ - Minor typo in POD ( Thanks David Steinbrunner )
+ - Uplevel mechanism bugged on Win32, thanks zdm for reporting
+ - Traversal Order is now test/iterate instead of iterate/test, meaning it
+   will test / prior to terminating, useful probably if $PROJECTDIR is a
+   UNC Share.
+ - Root check now performed by a more reliable Path::Tiny->is_rootdir,
+   xdg++ for the fixes.
+ - Path resolution is now performed and realpathed early on.
+
+ [Dependencies::Added / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL v1.9.0
+
+ [Dependencies::Added / develop suggests]
+ - Dist::Zilla::PluginBundle::Author::KENTNL::Lite v1.3.0
+
+ [Dependencies::Removed / develop recommends]
+ - Dist::Zilla::PluginBundle::Author::KENTNL::Lite v1.3.0
+
+ [Dependencies::Removed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL::Lite
+
+ [Dependencies::Removed / develop suggests]
+ - Dist::Zilla::PluginBundle::Author::KENTNL v1.8.3
+
+ [Dependencies::Removed / runtime requires]
+ - File::Spec
+
+ [Tests]
+ - Aggressively now checks that $PROJECTROOT/../ is not contained in a
+   directory that is considered "dev" by Path::IsDev.
+ - This is intended to smoke out quirks that exist on your filesystem, and
+   on CPAN Testers file systems in general that exhibit wart-like behaviour
+   to the Path::IsDev Heuristic sets.
+ - If these tests fail for you, they'll probably result in Path::IsDev and
+   Path::FindDev also being broken, so I greatly appreciate any reports
+   regarding false-positives that could be logically anticipated to be
+   false positives on all filesystems.
+ - Otherwise, please read the Path::IsDev documentation and see how to mark
+   a directory tree as a "NegativeHeuristic", namely, touch
+   $PROBLEMDIR/.path_isdev_ignore
+
 0.3.2 2013-09-26T07:21:34Z
  [Bugfix]
  - use a less broken Test::Compile for Win32 folk

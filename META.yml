@@ -21,17 +21,16 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.3.2
+    version: v0.4.0
   Path::FindDev::Object:
     file: lib/Path/FindDev/Object.pm
-    version: v0.3.2
+    version: v0.4.0
 requires:
   Carp: 0
   Class::Tiny: 0.010
-  File::Spec: 0
   Path::IsDev: v0.2.2
   Path::IsDev::Object: 0
-  Path::Tiny: 0
+  Path::Tiny: 0.038
   Scalar::Util: 0
   Sub::Exporter: 0
   perl: v5.10.0
@@ -41,21 +40,21 @@ resources:
   bugtracker: https://github.com/kentfredric/Path-FindDev/issues
   homepage: https://github.com/kentfredric/Path-FindDev
   repository: https://github.com/kentfredric/Path-FindDev.git
-version: 0.3.2
+version: 0.4.0
 x_BuiltWith:
   modules:
     Carp: 1.32
     Class::Tiny: 0.011
-    Dist::Zilla::PluginBundle::Author::KENTNL: 1.8.3
+    Dist::Zilla::PluginBundle::Author::KENTNL: 1.9.0
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 1.7.2
     File::Spec: 3.44
     FindBin: 1.51
     IO::Handle: 1.35
     IPC::Open3: 1.15
     Module::Build: 0.4007
-    Path::IsDev: 0.3.2
-    Path::IsDev::Object: 0.3.2
-    Path::Tiny: 0.037
+    Path::IsDev: 0.4.0
+    Path::IsDev::Object: 0.4.0
+    Path::Tiny: 0.038
     Pod::Coverage::TrustPod: 0.100002
     Scalar::Util: 1.32
     Sub::Exporter: 0.986
@@ -80,7 +79,7 @@ x_BuiltWith:
     myarchname: x86_64-linux
     osname: linux
   platform: linux
-  uname: 'Linux 3.11.1-gentoo x86_64 GenuineIntel GNU/Linux'
+  uname: 'Linux 3.11.2-gentoo x86_64 GenuineIntel GNU/Linux'
 x_Dist_Zilla:
   perl:
     version: 5.019003
@@ -96,7 +95,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GithubMeta
       name: '@Author::KENTNL/GithubMeta'
-      version: 0.38
+      version: 0.42
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: '@Author::KENTNL/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
@@ -224,29 +223,21 @@ x_Dist_Zilla:
       config:
         Dist::Zilla::Plugin::Prereqs:
           phase: develop
-          type: requires
-      name: '@Author::KENTNL/Prereqs/BundleDevelNeeds'
-      version: 4.300039
-    -
-      class: Dist::Zilla::Plugin::Prereqs
-      config:
-        Dist::Zilla::Plugin::Prereqs:
-          phase: develop
-          type: recommends
-      name: '@Author::KENTNL/Prereqs/BundleDevelRecommends'
-      version: 4.300039
-    -
-      class: Dist::Zilla::Plugin::Prereqs
-      config:
-        Dist::Zilla::Plugin::Prereqs:
-          phase: develop
           type: suggests
       name: '@Author::KENTNL/Prereqs/BundleDevelSuggests'
       version: 4.300039
     -
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: develop
+          type: requires
+      name: '@Author::KENTNL/Prereqs/BundleDevelRequires'
+      version: 4.300039
+    -
       class: Dist::Zilla::Plugin::Author::KENTNL::MinimumPerl
       name: '@Author::KENTNL/Author::KENTNL::MinimumPerl'
-      version: 1.8.3
+      version: 1.9.0
     -
       class: Dist::Zilla::Plugin::Authority
       name: '@Author::KENTNL/Authority'
@@ -306,7 +297,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Twitter
       name: '@Author::KENTNL/Twitter'
-      version: 0.021
+      version: 0.022
     -
       class: Dist::Zilla::Plugin::Prereqs::MatchInstalled
       config:

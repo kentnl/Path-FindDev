@@ -18,5 +18,38 @@ sub cmp_paths {
 }
 cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
+my $t_dir = path($FindBin::Bin);
+
+my $source_root = $t_dir->parent;
+
+my $outside_path = $source_root->parent;    # PROJECT_ROOT/../
+
+# if _THIS_ file is stored at  SOMEPATH/Path-FindDev/.build/randomletters/t/basic.t
+# then instead of doing tree traversal from
+#   SOMEPATH/Path-FindDev/.build/randomletters/
+# do it from
+#   SOMEPATH
+#
+# More annoying, during dzil release testing, the path is
+# is stored at  SOMEPATH/Path-FindDev/.build/randomletters/Path-IsDev-0.4/t/basic.t
+
+if ( $outside_path->basename eq '.build' ) {
+  $outside_path = $outside_path->parent->parent;
+}
+elsif ( $outside_path->parent->basename eq '.build' ) {
+  $outside_path = $outside_path->parent->parent->parent;
+}
+
+diag "External search started at " . $outside_path;
+
+if ( not is( find_dev($outside_path), undef, 'Finding a dev directory above the project directory should miss' ) ) {
+  no warnings 'once';
+  local $Path::IsDev::Object::DEBUG   = 1;
+  local $Path::FindDev::Object::DEBUG = 1;
+  diag "As the previous test failed, debug diagnosics for Path::IsDev are being turned on";
+  diag "These will hopefully tell you what warts your filesystem has that results in false-postives for dev dirs";
+
+  find_dev($outside_path);
+}
 done_testing;
 

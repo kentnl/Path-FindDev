@@ -1,4 +1,3 @@
-
 use strict;
 use warnings;
 
@@ -7,7 +6,7 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.3.2';
+  $Path::FindDev::Object::VERSION = '0.4.0';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
@@ -18,11 +17,6 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
 
 use Class::Tiny 0.010 'set', 'uplevel_max', {
-  os_root => sub {
-    require File::Spec;
-    require Path::Tiny;
-    return Path::Tiny::path( File::Spec->rootdir() )->absolute;
-  },
   nest_retry => sub {
     return 0;
   },
@@ -37,7 +31,6 @@ use Class::Tiny 0.010 'set', 'uplevel_max', {
 
 
 sub has_set { return exists $_[0]->{set} }
-
 
 
 
@@ -63,8 +56,7 @@ sub BUILD {
   my ($self) = @_;
   return $self unless $DEBUG;
   $self->_debug('{');
-  $self->_debug( '  set         => ' . $self->set ) if $self->has_set;
-  $self->_debug( '  os_root     => ' . $self->os_root );
+  $self->_debug( '  set         => ' . $self->set )         if $self->has_set;
   $self->_debug( '  uplevel_max => ' . $self->uplevel_max ) if $self->uplevel_max;
   $self->_debug( '  nest_retry  => ' . $self->nest_retry );
   $self->_debug( '  isdev       => ' . $self->isdev );
@@ -93,20 +85,21 @@ sub _error {
 sub _step {
   my ( $self, $search_root, $dev_levels, $uplevels ) = @_;
 
-  if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
-    $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
-    return { type => 'stop' };
-  }
-  if ( $search_root->stringify eq $self->os_root->stringify ) {
-    $self->_debug('Found OS Root');
-    return { type => 'stop' };
-  }
   if ( $self->isdev->matches($search_root) ) {
     $self->_debug( 'Found dev dir' . $search_root );
     ${$dev_levels}++;
     return { type => 'found', path => $search_root } if ${$dev_levels} >= $self->nest_retry;
     $self->_debug( sprintf 'Ignoring found dev dir due to dev_levels(%s) < nest_retry(%s)', ${$dev_levels}, $self->nest_retry );
   }
+  if ( $search_root->is_rootdir ) {
+    $self->_debug('OS Root hit ( ->is_rootdir )');
+    return { type => 'stop' };
+  }
+  if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
+    $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
+    return { type => 'stop' };
+  }
+
   return { type => 'next' };
 }
 
@@ -114,7 +107,7 @@ sub _step {
 sub find_dev {
   my ( $self, $path ) = @_;
   require Path::Tiny;
-  my $search_root = Path::Tiny::path($path)->absolute;
+  my $search_root = Path::Tiny::path($path)->absolute->realpath;
   $self->_debug( 'Finding dev for ' . $path );
   my $dev_levels = 0;
   my $uplevels   = 0 - 1;
@@ -122,7 +115,7 @@ FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
     if ( $result->{type} eq 'next' ) {
-      $self->_debug('Trying ../');
+      $self->_debug( 'Trying ../ : ' . $search_root->parent );
       $search_root = $search_root->parent;
       redo FLOW;
     }
@@ -150,7 +143,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.3.2
+version 0.4.0
 
 =head1 SYNOPSIS
 
@@ -187,10 +180,6 @@ B<(optional)>
 
 The C<Path::IsDev::HeuristicSet> subclass for your desired Heuristics.
 
-=head2 C<os_root>
-
-A Path::Tiny object for C<< File::Spec->rootdir >>
-
 =head2 C<uplevel_max>
 
 If provided, limits the number of C<uplevel> iterations done.
@@ -199,7 +188,7 @@ If provided, limits the number of C<uplevel> iterations done.
 
 =head2 C<nest_retry>
 
-The the number of C<dev> directories to C<ignore> in the hierarchy.
+The number of C<dev> directories to C<ignore> in the hierarchy.
 
 This is provided in the event you have a C<dev> directory within a C<dev> directory, and you wish
 to resolve an outer directory instead of an inner one.

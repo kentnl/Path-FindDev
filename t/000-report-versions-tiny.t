@@ -50,7 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Class::Tiny','0.010') };
-eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL','v1.8.3') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL','v1.9.0') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL::Lite','v1.3.0') };
 eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('FindBin','any version') };
@@ -59,7 +59,7 @@ eval { $v .= pmver('IPC::Open3','any version') };
 eval { $v .= pmver('Module::Build','0.4007') };
 eval { $v .= pmver('Path::IsDev','v0.2.2') };
 eval { $v .= pmver('Path::IsDev::Object','any version') };
-eval { $v .= pmver('Path::Tiny','any version') };
+eval { $v .= pmver('Path::Tiny','0.038') };
 eval { $v .= pmver('Pod::Coverage::TrustPod','any version') };
 eval { $v .= pmver('Scalar::Util','any version') };
 eval { $v .= pmver('Sub::Exporter','any version') };
