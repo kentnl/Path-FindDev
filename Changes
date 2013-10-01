@@ -1,6 +1,6 @@
 Release history for Path-FindDev
 
-0.3.3 2013-10-01T22:25:46Z
+0.3.3 2013-10-01T22:26:44Z
  [00 API Backwards Incompatible Changes]
  - os_root property no longer exists, as is no longer required internally
 

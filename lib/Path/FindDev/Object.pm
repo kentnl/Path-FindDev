@@ -97,8 +97,8 @@ sub _step {
     $self->_debug( sprintf 'Ignoring found dev dir due to dev_levels(%s) < nest_retry(%s)', ${$dev_levels}, $self->nest_retry );
   }
 
-  if ( $search_root->is_root ) {
-      $self->_debug('OS Root hit ( ->is_root )');
+  if ( $search_root->is_rootdir ) {
+      $self->_debug('OS Root hit ( ->is_rootdir )');
       return { type => 'stop' };
   }
   $self->_set_visit( $search_root, 1 );
