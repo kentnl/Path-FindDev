@@ -108,7 +108,7 @@ sub _step {
 sub find_dev {
   my ( $self, $path ) = @_;
   require Path::Tiny;
-  my $search_root = Path::Tiny::path($path)->absolute;
+  my $search_root = Path::Tiny::path($path)->absolute->realpath;
   $self->_debug( 'Finding dev for ' . $path );
   my $dev_levels = 0;
   my $uplevels   = 0 - 1;
