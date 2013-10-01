@@ -116,7 +116,7 @@ FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
     if ( $result->{type} eq 'next' ) {
-      $self->_debug('Trying ../');
+      $self->_debug('Trying ../ : ' . $search_root->parent);
       $search_root = $search_root->parent;
       redo FLOW;
     }
