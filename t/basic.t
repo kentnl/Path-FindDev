@@ -20,6 +20,8 @@ cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
 my $outside_path = path($FindBin::Bin)->parent;
 
+diag "$outside_path";
+
 if ( $outside_path->parent->basename eq '.build' ) {
     $outside_path = $outside_path->parent->parent;
 }
@@ -34,7 +36,7 @@ if (
   diag "As the previous test failed, debug diagnosics for Path::IsDev are being turned on";
   diag "These will hopefully tell you what warts your filesystem has that results in false-postives for dev dirs";
 
-  find_dev( path($FindBin::Bin)->parent->parent );
+  find_dev( $outside_path );
 }
 done_testing;
 
