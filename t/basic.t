@@ -24,11 +24,11 @@ my $source_root = $t_dir->parent;
 
 my $outside_path = $source_root->parent; # PROJECT_ROOT/../
 
-diag $outside_path->basename;
-
 if ( $outside_path->basename eq '.build' ) {
-    $outside_path = $outside_path->parent;
+    $outside_path = $outside_path->parent->parent;
 }
+
+diag "External search started at " . $outside_path;
 
 if (
   not is( find_dev( $outside_path ), undef,
