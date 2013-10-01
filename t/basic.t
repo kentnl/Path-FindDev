@@ -26,7 +26,7 @@ my $outside_path = $source_root->parent; # PROJECT_ROOT/../
 
 diag $outside_path->basename;
 
-if ( $outside_path->parent->basename eq '.build' ) {
+if ( $outside_path->basename eq '.build' ) {
     $outside_path = $outside_path->parent;
 }
 
