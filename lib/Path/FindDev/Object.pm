@@ -110,6 +110,7 @@ sub _step {
       $self->_debug('Found already visited path, assuming root has been hit');
       return { type => 'stop' };
   }
+  $self->_set_visit( $search_root, 1 );
   if ( $self->isdev->matches($search_root) ) {
     $self->_debug( 'Found dev dir' . $search_root );
     ${$dev_levels}++;
