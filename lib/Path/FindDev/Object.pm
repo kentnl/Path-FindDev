@@ -87,14 +87,14 @@ sub _error {
 
 sub _has_visited {
     my ( $self, $path ) = @_;
-    if ( exists $self->vist_cache->{ $path->absolute->stringify } ) {
+    if ( exists $self->visit_cache->{ $path->absolute->stringify } ) {
         return 1;
     }
     return;
 }
 sub _set_visit {
     my ( $self, $path , $value ) = @_;
-    $self->vist_cache->{ $path->absolute->stringify } = $value;
+    $self->visit_cache->{ $path->absolute->stringify } = $value;
     return $value;
 }
 
