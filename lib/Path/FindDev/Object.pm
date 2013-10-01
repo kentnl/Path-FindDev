@@ -101,8 +101,6 @@ sub _step {
       $self->_debug('OS Root hit ( ->is_rootdir )');
       return { type => 'stop' };
   }
-  $self->_set_visit( $search_root, 1 );
-
   return { type => 'next' };
 }
 
