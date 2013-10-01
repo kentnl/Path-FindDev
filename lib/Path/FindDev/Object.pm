@@ -1,4 +1,3 @@
-
 use strict;
 use warnings;
 
@@ -91,7 +90,7 @@ sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
 
 =attr C<nest_retry>
 
-The the number of C<dev> directories to C<ignore> in the hierarchy.
+The number of C<dev> directories to C<ignore> in the hierarchy.
 
 This is provided in the event you have a C<dev> directory within a C<dev> directory, and you wish
 to resolve an outer directory instead of an inner one.
