@@ -86,21 +86,21 @@ sub _error {
 sub _step {
   my ( $self, $search_root, $dev_levels, $uplevels ) = @_;
 
-  if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
-    $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
-    return { type => 'stop' };
-  }
   if ( $self->isdev->matches($search_root) ) {
     $self->_debug( 'Found dev dir' . $search_root );
     ${$dev_levels}++;
     return { type => 'found', path => $search_root } if ${$dev_levels} >= $self->nest_retry;
     $self->_debug( sprintf 'Ignoring found dev dir due to dev_levels(%s) < nest_retry(%s)', ${$dev_levels}, $self->nest_retry );
   }
-
   if ( $search_root->is_rootdir ) {
       $self->_debug('OS Root hit ( ->is_rootdir )');
       return { type => 'stop' };
   }
+  if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
+    $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
+    return { type => 'stop' };
+  }
+
   return { type => 'next' };
 }
 
