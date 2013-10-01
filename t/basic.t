@@ -18,12 +18,16 @@ sub cmp_paths {
 }
 cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
-my $outside_path = path($FindBin::Bin)->parent->parent; # PROJECT_ROOT/../
+my $t_dir = path($FindBin::Bin);
 
-diag $outside_path->parent->basename;
+my $source_root = $t_dir->parent;
+
+my $outside_path = $source_root->parent; # PROJECT_ROOT/../
+
+diag $outside_path->basename;
 
 if ( $outside_path->parent->basename eq '.build' ) {
-    $outside_path = $outside_path->parent->parent->parent;
+    $outside_path = $outside_path->parent;
 }
 
 if (
