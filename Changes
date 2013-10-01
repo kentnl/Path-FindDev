@@ -1,12 +1,18 @@
 Release history for Path-FindDev
 
-0.4.0 2013-10-01T22:31:20Z
+0.4.0 2013-10-01T22:39:24Z
  [00 API Backwards Incompatible Changes]
  - os_root property no longer exists, as is no longer required internally
 
  [Bugfixes]
  - Minor typo in POD ( Thanks David Steinbrunner )
  - Uplevel mechanism bugged on Win32, thanks zdm for reporting
+ - Traversal Order is now test/iterate instead of iterate/test, meaning it
+   will test / prior to terminating, useful probably if $PROJECTDIR is a
+   UNC Share.
+ - Root check now performed by a more reliable Path::Tiny->is_rootdir,
+   xdg++ for the fixes.
+ - Path resolution is now performed and realpathed early on.
 
  [Dependencies::Added / develop requires]
  - Dist::Zilla::PluginBundle::Author::KENTNL v1.9.0

@@ -38,7 +38,6 @@ sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
 
 
 
-
 my $instances   = {};
 my $instance_id = 0;
 
@@ -57,7 +56,7 @@ sub BUILD {
   my ($self) = @_;
   return $self unless $DEBUG;
   $self->_debug('{');
-  $self->_debug( '  set         => ' . $self->set ) if $self->has_set;
+  $self->_debug( '  set         => ' . $self->set )         if $self->has_set;
   $self->_debug( '  uplevel_max => ' . $self->uplevel_max ) if $self->uplevel_max;
   $self->_debug( '  nest_retry  => ' . $self->nest_retry );
   $self->_debug( '  isdev       => ' . $self->isdev );
@@ -93,8 +92,8 @@ sub _step {
     $self->_debug( sprintf 'Ignoring found dev dir due to dev_levels(%s) < nest_retry(%s)', ${$dev_levels}, $self->nest_retry );
   }
   if ( $search_root->is_rootdir ) {
-      $self->_debug('OS Root hit ( ->is_rootdir )');
-      return { type => 'stop' };
+    $self->_debug('OS Root hit ( ->is_rootdir )');
+    return { type => 'stop' };
   }
   if ( $self->has_uplevel_max and ${$uplevels} > $self->uplevel_max ) {
     $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
@@ -116,7 +115,7 @@ FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
     if ( $result->{type} eq 'next' ) {
-      $self->_debug('Trying ../ : ' . $search_root->parent);
+      $self->_debug( 'Trying ../ : ' . $search_root->parent );
       $search_root = $search_root->parent;
       redo FLOW;
     }
@@ -199,10 +198,6 @@ By default, this is C<0>, or "stop at the first C<dev> directory"
 =head2 C<isdev>
 
 The L<< C<Path::IsDev>|Path::IsDev >> object that checks nodes for C<dev>-ishness.
-
-=head2 C<visit_cache>
-
-A cache of paths visited and tested for C<dev>-ishness.
 
 =head1 PRIVATE METHODS
 
