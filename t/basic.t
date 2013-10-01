@@ -20,7 +20,7 @@ cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
 my $outside_path = path($FindBin::Bin)->parent;
 
-diag "$outside_path";
+diag $outside_path->parent->basename;
 
 if ( $outside_path->parent->basename eq '.build' ) {
     $outside_path = $outside_path->parent->parent;
