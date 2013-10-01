@@ -24,9 +24,6 @@ use Class::Tiny 0.010 'set', 'uplevel_max', {
     require Path::IsDev::Object;
     return Path::IsDev::Object->new( ( $_[0]->has_set ? ( set => $_[0]->set ) : () ) );
   },
-  visit_cache => sub {
-      return {};
-  },
 };
 
 
@@ -85,19 +82,6 @@ sub _error {
   Carp::croak($f_message);
 }
 
-sub _has_visited {
-    my ( $self, $path ) = @_;
-    if ( exists $self->visit_cache->{ $path->absolute->stringify } ) {
-        return 1;
-    }
-    return;
-}
-sub _set_visit {
-    my ( $self, $path , $value ) = @_;
-    $self->visit_cache->{ $path->absolute->stringify } = $value;
-    return $value;
-}
-
 
 sub _step {
   my ( $self, $search_root, $dev_levels, $uplevels ) = @_;
@@ -106,17 +90,19 @@ sub _step {
     $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
     return { type => 'stop' };
   }
-  if ( $self->_has_visited( $search_root ) ) {
-      $self->_debug('Found already visited path, assuming root has been hit');
-      return { type => 'stop' };
-  }
-  $self->_set_visit( $search_root, 1 );
   if ( $self->isdev->matches($search_root) ) {
     $self->_debug( 'Found dev dir' . $search_root );
     ${$dev_levels}++;
     return { type => 'found', path => $search_root } if ${$dev_levels} >= $self->nest_retry;
     $self->_debug( sprintf 'Ignoring found dev dir due to dev_levels(%s) < nest_retry(%s)', ${$dev_levels}, $self->nest_retry );
   }
+
+  if ( $search_root->is_root ) {
+      $self->_debug('OS Root hit ( ->is_root )');
+      return { type => 'stop' };
+  }
+  $self->_set_visit( $search_root, 1 );
+
   return { type => 'next' };
 }
 
