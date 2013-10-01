@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Path-FindDev",
-  "dist_version" => "0.3.2",
+  "dist_version" => "0.3.3",
   "license" => "perl",
   "module_name" => "Path::FindDev",
   "recommends" => {},
@@ -25,7 +25,6 @@ my %module_build_args = (
   "requires" => {
     "Carp" => 0,
     "Class::Tiny" => "0.010",
-    "File::Spec" => 0,
     "Path::IsDev" => "v0.2.2",
     "Path::IsDev::Object" => 0,
     "Path::Tiny" => 0,

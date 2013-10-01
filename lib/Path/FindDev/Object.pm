@@ -7,7 +7,7 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.3.2';
+  $Path::FindDev::Object::VERSION = '0.3.3';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
@@ -18,11 +18,6 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
 
 use Class::Tiny 0.010 'set', 'uplevel_max', {
-  os_root => sub {
-    require File::Spec;
-    require Path::Tiny;
-    return Path::Tiny::path( File::Spec->rootdir() )->absolute;
-  },
   nest_retry => sub {
     return 0;
   },
@@ -37,7 +32,6 @@ use Class::Tiny 0.010 'set', 'uplevel_max', {
 
 
 sub has_set { return exists $_[0]->{set} }
-
 
 
 
@@ -97,8 +91,8 @@ sub _step {
     $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
     return { type => 'stop' };
   }
-  if ( $search_root->stringify eq $self->os_root->stringify ) {
-    $self->_debug('Found OS Root');
+  if ( $search_root->absolute->dirname eq q[/] ) {
+    $self->_debug('Found OS Root ( dirname = / )');
     return { type => 'stop' };
   }
   if ( $self->isdev->matches($search_root) ) {
@@ -150,7 +144,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.3.2
+version 0.3.3
 
 =head1 SYNOPSIS
 
@@ -186,10 +180,6 @@ Find a parent at, or above C<$OtherPath> that resembles a C<devel> directory.
 B<(optional)>
 
 The C<Path::IsDev::HeuristicSet> subclass for your desired Heuristics.
-
-=head2 C<os_root>
-
-A Path::Tiny object for C<< File::Spec->rootdir >>
 
 =head2 C<uplevel_max>
 
