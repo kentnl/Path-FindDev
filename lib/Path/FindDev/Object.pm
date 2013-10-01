@@ -34,11 +34,6 @@ only recommended for use if the Exporter C<API> is insufficient for your needs.
 =cut
 
 use Class::Tiny 0.010 'set', 'uplevel_max', {
-  os_root => sub {
-    require File::Spec;
-    require Path::Tiny;
-    return Path::Tiny::path( File::Spec->rootdir() )->absolute;
-  },
   nest_retry => sub {
     return 0;
   },
@@ -65,12 +60,6 @@ Determines if the C<set> attribute exists
 =cut
 
 sub has_set { return exists $_[0]->{set} }
-
-=attr C<os_root>
-
-A Path::Tiny object for C<< File::Spec->rootdir >>
-
-=cut
 
 =attr C<uplevel_max>
 
@@ -209,8 +198,8 @@ sub _step {
     $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
     return { type => 'stop' };
   }
-  if ( $search_root->stringify eq $self->os_root->stringify ) {
-    $self->_debug('Found OS Root');
+  if ( $search_root->absolute->dirname eq q[/] ) {
+    $self->_debug('Found OS Root ( dirname = / )');
     return { type => 'stop' };
   }
   if ( $self->isdev->matches($search_root) ) {
