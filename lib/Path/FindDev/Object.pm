@@ -6,7 +6,7 @@ BEGIN {
   $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::Object::VERSION = '0.4.0';
+  $Path::FindDev::Object::VERSION = '0.3.3';
 }
 
 # ABSTRACT: Object oriented guts to C<FindDev>
@@ -89,8 +89,8 @@ sub _step {
     $self->_debug( 'Stopping search due to uplevels(%s) >= uplevel_max(%s)', ${$uplevels}, $self->uplevel_max );
     return { type => 'stop' };
   }
-  if ( $search_root->absolute->dirname eq q[/] ) {
-    $self->_debug('Found OS Root ( dirname = / )');
+  if ( $search_root->absolute->dirname eq q[/] and $search_root->absolute->basename eq '' ) {
+    $self->_debug('Found OS Root ( dirname = /  and basename = empty )');
     return { type => 'stop' };
   }
   if ( $self->isdev->matches($search_root) ) {
@@ -142,7 +142,7 @@ Path::FindDev::Object - Object oriented guts to C<FindDev>
 
 =head1 VERSION
 
-version 0.4.0
+version 0.3.3
 
 =head1 SYNOPSIS
 
