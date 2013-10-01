@@ -133,7 +133,6 @@ sub BUILD {
   return $self unless $DEBUG;
   $self->_debug('{');
   $self->_debug( '  set         => ' . $self->set ) if $self->has_set;
-  $self->_debug( '  os_root     => ' . $self->os_root );
   $self->_debug( '  uplevel_max => ' . $self->uplevel_max ) if $self->uplevel_max;
   $self->_debug( '  nest_retry  => ' . $self->nest_retry );
   $self->_debug( '  isdev       => ' . $self->isdev );
