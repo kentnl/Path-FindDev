@@ -29,8 +29,15 @@ my $outside_path = $source_root->parent;    # PROJECT_ROOT/../
 #   SOMEPATH/Path-FindDev/.build/randomletters/
 # do it from
 #   SOMEPATH
+#
+# More annoying, during dzil release testing, the path is
+# is stored at  SOMEPATH/Path-FindDev/.build/randomletters/Path-IsDev-0.4/t/basic.t
+
 if ( $outside_path->basename eq '.build' ) {
   $outside_path = $outside_path->parent->parent;
+}
+elsif ( $outside_path->parent->basename eq '.build' ) {
+  $outside_path = $outside_path->parent->parent->parent;
 }
 
 diag "External search started at " . $outside_path;
