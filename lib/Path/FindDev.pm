@@ -6,7 +6,7 @@ BEGIN {
   $Path::FindDev::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Path::FindDev::VERSION = '0.4.0';
+  $Path::FindDev::VERSION = '0.4.1';
 }
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
@@ -38,7 +38,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -46,7 +46,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.4.0
+version 0.4.1
 
 =head1 DESCRIPTION
 

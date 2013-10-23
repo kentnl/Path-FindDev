@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Path-FindDev",
-  "dist_version" => "0.4.0",
+  "dist_version" => "0.4.1",
   "license" => "perl",
   "module_name" => "Path::FindDev",
   "recommends" => {},
@@ -40,7 +40,7 @@ my %module_build_args = (
     "FindBin" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Test::More" => "0.98"
+    "Test::More" => "0.99"
   }
 );
 
