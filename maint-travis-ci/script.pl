@@ -9,7 +9,7 @@ sub env_exists { return exists $ENV{ $_[0] } }
 sub env_true { return env_exists( $_[0] ) and $ENV{ $_[0] } }
 sub env_is { return env_exists($_[0]) and $ENV{$_[0]} eq $_[1] }
 
-sub safe_exec {
+sub safe_exec_nonfatal {
   my ( $command, @params ) = @_;
   diag("running $command @params");
   my $exit = system( $command, @params );
@@ -18,11 +18,21 @@ sub safe_exec {
     my $high = $exit >> 8;
     warn "$command failed: $? $! and exit = $high , flags = $low";
     if ( $high != 0 ) {
-      exit $high;
+      return $high;
     }
     else {
-      exit 1;
+      return 1;
     }
+
+  }
+  return 0;
+}
+
+sub safe_exec {
+  my ( $command, @params ) = @_;
+  my $exit_code = safe_exec_nonfatal( $command, @params );
+  if ( $exit_code != 0 ){
+      exit $exit_code;
   }
   return 1;
 }
@@ -33,7 +43,15 @@ if ( not env_exists('TRAVIS') ) {
 }
 
 if ( env_is('TRAVIS_BRANCH', 'master' ) ) {
-
+   my $xtest = safe_exec_nonfatal('dzil','xtest');
+   my $test  = safe_exec_nonfatal('dzil','test');
+   if ( $test != 0) {
+       exit $test;
+   }
+   if ( $xtest != 0 ){
+       exit $xtest;
+   }
+    exit 0;
 } else {
     my @paths = './t';
 
