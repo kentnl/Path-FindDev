@@ -52,8 +52,9 @@ if ( $ENV{SYSTEM_PATH_TEST} ) {
 
     find_dev($outside_path);
   }
-} else {
-    diag "System path sanity check skipped due to potential security risks, set ENV{SYSTEM_PATH_TEST} if you wish to run this test";
+}
+else {
+  diag "System path sanity check skipped due to potential security risks, set ENV{SYSTEM_PATH_TEST} if you wish to run this test";
 }
 done_testing;
 
