@@ -7,6 +7,7 @@ use utf8;
 sub diag { print STDERR @_; print STDERR "\n" }
 sub env_exists { return exists $ENV{ $_[0] } }
 sub env_true { return env_exists( $_[0] ) and $ENV{ $_[0] } }
+sub env_is { return env_exists($_[0]) and $ENV{$_[0]} eq $_[1] }
 
 sub safe_exec {
   my ( $command, @params ) = @_;
@@ -31,9 +32,13 @@ if ( not env_exists('TRAVIS') ) {
   exit 1;
 }
 
-my @paths = './t';
+if ( env_is('TRAVIS_BRANCH', 'master' ) ) {
 
-if ( env_true('AUTHOR_TESTING') or env_true('RELEASE_TESTING') ) {
-  push @paths, './xt';
+} else {
+    my @paths = './t';
+
+    if (  env_true('AUTHOR_TESTING') or env_true('RELEASE_TESTING') ) {
+      push @paths, './xt';
+    }
+    safe_exec( 'prove', '--blib', '--shuffle', '--color', '--recurse', '--timer', '--jobs', 30, @paths );
 }
-safe_exec( 'prove', '--blib', '--shuffle', '--color', '--recurse', '--timer', '--jobs', 30, @paths );
