@@ -1,5 +1,17 @@
 Release history for Path-FindDev
 
+0.4.1 2013-10-23T19:08:22Z
+ [00 Bugfix]
+ - System path test added in 0.4.0 disabled due to potential security risks
+   ( fixes #4 )
+
+ [Dependencies::Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL v1.9.0 → 2.000000
+ - Test::Kwalitee 1.08 → 1.12
+
+ [Dependencies::Changed / test requires]
+ - Test::More 0.98 → 0.99
+
 0.4.0 2013-10-01T22:51:43Z
  [00 API Backwards Incompatible Changes]
  - os_root property no longer exists, as is no longer required internally
