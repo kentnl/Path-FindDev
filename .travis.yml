@@ -13,7 +13,7 @@ matrix:
     #  env:  STERILIZE_ENV=0
     #- perl: "5.19"
     #  env:  STERILIZE_ENV=0
-    - perl: "5.10"
+    - perl: "5.8"
       env:  STERILIZE_ENV=1
     #- perl: "5.19"
     #  env:  STERILIZE_ENV=1
