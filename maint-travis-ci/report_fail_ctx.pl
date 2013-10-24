@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use utf8;
+
 sub diag { print STDERR @_; print STDERR "\n" }
 sub env_exists { return exists $ENV{ $_[0] } }
 sub env_true   { return ( env_exists( $_[0] ) and $ENV{ $_[0] } ) }
@@ -22,30 +23,20 @@ sub safe_exec_nonfatal {
     else {
       return 1;
     }
+
   }
   return 0;
 }
 
 sub safe_exec {
   my ( $command, @params ) = @_;
-  my $result = safe_exec_nonfatal( $command, @params );
-  exit $result if $result != 0;
+  my $exit_code = safe_exec_nonfatal( $command, @params );
+  if ( $exit_code != 0 ) {
+    exit $exit_code;
+  }
+  return 1;
 }
 
-if ( env_is( 'TRAVIS_BRANCH', 'master' ) ) {
-  diag("before_script skipped, TRAVIS_BRANCH=master");
-  exit 0;
-}
-else {
-  if ( -e './Build.PL' ) {
-    safe_exec( $^X, './Build.PL' );
-    safe_exec("./Build");
-    exit 0;
-  }
-  if ( -e './Makefile.PL' ) {
-    safe_exec( $^X, './Makefile.PL' );
-    safe_exec("make");
-    exit 0;
-  }
-}
+diag("Last 1000 lines of cpanm build log");
+safe_exec( 'tail', '-n', '1000', $ENV{HOME} . '/.cpanm/build.log' );
 

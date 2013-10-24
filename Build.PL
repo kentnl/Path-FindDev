@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Path-FindDev",
-  "dist_version" => "0.4.1",
+  "dist_version" => "0.4.2",
   "license" => "perl",
   "module_name" => "Path::FindDev",
   "recommends" => {},
@@ -30,32 +30,32 @@ my %module_build_args = (
     "Path::Tiny" => "0.038",
     "Scalar::Util" => 0,
     "Sub::Exporter" => 0,
-    "perl" => "v5.10.0",
+    "perl" => "5.006",
     "strict" => 0,
     "warnings" => 0
   },
   "script_files" => [],
   "test_requires" => {
-    "File::Spec" => 0,
+    "Capture::Tiny" => 0,
     "FindBin" => 0,
-    "IO::Handle" => 0,
-    "IPC::Open3" => 0,
-    "Test::More" => "0.99"
+    "Test::More" => "0.99",
+    "blib" => 0
   }
 );
 
 
+my %fallback_build_requires = (
+  "Capture::Tiny" => 0,
+  "FindBin" => 0,
+  "Module::Build" => "0.4007",
+  "Test::More" => "0.99",
+  "blib" => 0
+);
+
+
 unless ( eval { Module::Build->VERSION(0.4004) } ) {
-  my $tr = delete $module_build_args{test_requires};
-  my $br = $module_build_args{build_requires};
-  for my $mod ( keys %$tr ) {
-    if ( exists $br->{$mod} ) {
-      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
-    }
-    else {
-      $br->{$mod} = $tr->{$mod};
-    }
-  }
+  delete $module_build_args{test_requires};
+  $module_build_args{build_requires} = \%fallback_build_requires;
 }
 
 my $build = Module::Build->new(%module_build_args);

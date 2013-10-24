@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use utf8;
+use Cwd qw(cwd);
 
 sub diag { print STDERR @_; print STDERR "\n" }
 sub env_exists { return exists $ENV{ $_[0] } }
@@ -58,7 +59,17 @@ if ( env_true('DEVELOPER_DEPS') ) {
 if ( env_is( 'TRAVIS_BRANCH', 'master' ) ) {
   cpanm( @params, 'Dist::Zilla', 'Capture::Tiny', 'Pod::Weaver' );
   cpanm( @params, '--dev',       'Dist::Zilla',   'Pod::Weaver' );
+  safe_exec( 'git', 'config', '--global', 'user.email', 'kentfredric+travisci@gmail.com' );
+  safe_exec( 'git', 'config', '--global', 'user.name',  'Travis CI ( On behalf of Kent Fredric )' );
+  mkdir '/tmp';
+  my $cwd = cwd();
+  chdir '/tmp';
+  safe_exec( 'git', 'clone', 'https://github.com/kentfredric/cpan-fixes.git' );
+  chdir '/tmp/cpan-fixes';
+  cpanm( @params, './Dist-Zilla-Plugin-Git-2.017.tar.gz' );
 
+  #cpanm( @params, './Dist-Zilla-Plugin-Prepender-1.132960.tar.gz' );
+  chdir $cwd;
   require Capture::Tiny;
   my $stdout = Capture::Tiny::capture_stdout(
     sub {

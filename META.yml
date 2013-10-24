@@ -3,16 +3,15 @@ abstract: 'Find a development path somewhere in an upper hierarchy.'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:
-  File::Spec: 0
+  Capture::Tiny: 0
   FindBin: 0
-  IO::Handle: 0
-  IPC::Open3: 0
   Module::Build: 0.4007
   Test::More: 0.99
+  blib: 0
 configure_requires:
   Module::Build: 0.4007
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.000, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Dist::Zilla version 5.001, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -21,10 +20,10 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.4.1
+    version: v0.4.2
   Path::FindDev::Object:
     file: lib/Path/FindDev/Object.pm
-    version: v0.4.1
+    version: v0.4.2
 requires:
   Carp: 0
   Class::Tiny: 0.010
@@ -33,24 +32,22 @@ requires:
   Path::Tiny: 0.038
   Scalar::Util: 0
   Sub::Exporter: 0
-  perl: v5.10.0
+  perl: 5.006
   strict: 0
   warnings: 0
 resources:
   bugtracker: https://github.com/kentfredric/Path-FindDev/issues
   homepage: https://github.com/kentfredric/Path-FindDev
   repository: https://github.com/kentfredric/Path-FindDev.git
-version: 0.4.1
+version: 0.4.2
 x_BuiltWith:
   modules:
+    Capture::Tiny: 0.23
     Carp: 1.32
     Class::Tiny: 0.011
     Dist::Zilla::PluginBundle::Author::KENTNL: 2.000000
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 1.7.2
-    File::Spec: 3.40
     FindBin: 1.51
-    IO::Handle: 1.35
-    IPC::Open3: 1.15
     Module::Build: 0.4007
     Path::IsDev: 1.000000
     Path::IsDev::Object: 1.000000
@@ -64,6 +61,7 @@ x_BuiltWith:
     Test::More: 0.99
     Test::Pod: 1.48
     Test::Pod::Coverage: 1.08
+    blib: 1.06
     strict: 1.08
     version: 0.9904
     warnings: 1.18
@@ -91,7 +89,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Author::KENTNL/MetaConfig'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::GithubMeta
       name: '@Author::KENTNL/GithubMeta'
@@ -99,7 +97,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: '@Author::KENTNL/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::MetaProvides::Package
       config:
@@ -134,31 +132,31 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::License
       name: '@Author::KENTNL/License'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@Author::KENTNL/MetaJSON'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@Author::KENTNL/MetaYAML'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@Author::KENTNL/Manifest'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::MetaTests
       name: '@Author::KENTNL/MetaTests'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::PodCoverageTests
       name: '@Author::KENTNL/PodCoverageTests'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Author::KENTNL/PodSyntaxTests'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::ReportVersions::Tiny
       name: '@Author::KENTNL/ReportVersions::Tiny'
@@ -179,13 +177,12 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Test::Compile
       config:
         Dist::Zilla::Plugin::Test::Compile:
-          filename: t/00-compile.t
           module_finder:
             - ':InstallModules'
           script_finder:
             - ':ExecFiles'
       name: '@Author::KENTNL/Test::Compile'
-      version: 2.037
+      version: 2.018
     -
       class: Dist::Zilla::Plugin::Test::Perl::Critic
       name: '@Author::KENTNL/Test::Perl::Critic'
@@ -193,15 +190,15 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@Author::KENTNL/PruneCruft'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@Author::KENTNL/ManifestSkip'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@Author::KENTNL/PkgVersion'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::PodWeaver
       config:
@@ -214,11 +211,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@Author::KENTNL/NextRelease'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@Author::KENTNL/AutoPrereqs'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -226,7 +223,7 @@ x_Dist_Zilla:
           phase: develop
           type: suggests
       name: '@Author::KENTNL/Prereqs/BundleDevelSuggests'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -234,7 +231,7 @@ x_Dist_Zilla:
           phase: develop
           type: requires
       name: '@Author::KENTNL/Prereqs/BundleDevelRequires'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::Author::KENTNL::MinimumPerl
       name: '@Author::KENTNL/Author::KENTNL::MinimumPerl'
@@ -246,7 +243,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::ModuleBuild
       name: '@Author::KENTNL/ModuleBuild'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::ReadmeFromPod
       name: '@Author::KENTNL/ReadmeFromPod'
@@ -266,11 +263,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Author::KENTNL/TestRelease'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@Author::KENTNL/ConfirmRelease'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@Author::KENTNL/Git::Check'
@@ -294,7 +291,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Author::KENTNL/UploadToCPAN'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::Twitter
       name: '@Author::KENTNL/Twitter'
@@ -342,34 +339,34 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: RuntimeRequires
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 5.000
+      version: 5.001
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 5.000
+      version: 5.001
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: 0
-    version: 5.000
+    version: 5.001
 x_authority: cpan:KENTNL

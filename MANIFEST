@@ -16,6 +16,7 @@ maint-travis-ci/README.mkdn
 maint-travis-ci/before_script.pl
 maint-travis-ci/install_deps.pl
 maint-travis-ci/merge_travis_yml.pl
+maint-travis-ci/report_fail_ctx.pl
 maint-travis-ci/script.pl
 maint-travis-ci/sterilize_env.pl
 maint-travis-ci/sync_tree.pl
