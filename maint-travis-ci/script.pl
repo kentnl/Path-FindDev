@@ -4,44 +4,22 @@ use strict;
 use warnings;
 use utf8;
 
-sub diag { print STDERR @_; print STDERR "\n" }
-sub env_exists { return exists $ENV{ $_[0] } }
-sub env_true   { return ( env_exists( $_[0] ) and $ENV{ $_[0] } ) }
-sub env_is     { return ( env_exists( $_[0] ) and $ENV{ $_[0] } eq $_[1] ) }
-
-sub safe_exec_nonfatal {
-  my ( $command, @params ) = @_;
-  diag("running $command @params");
-  my $exit = system( $command, @params );
-  if ( $exit != 0 ) {
-    my $low  = $exit & 0b11111111;
-    my $high = $exit >> 8;
-    warn "$command failed: $? $! and exit = $high , flags = $low";
-    if ( $high != 0 ) {
-      return $high;
-    }
-    else {
-      return 1;
-    }
-
-  }
-  return 0;
-}
-
-sub safe_exec {
-  my ( $command, @params ) = @_;
-  my $exit_code = safe_exec_nonfatal( $command, @params );
-  if ( $exit_code != 0 ) {
-    exit $exit_code;
-  }
-  return 1;
-}
+use FindBin;
+use lib "$FindBin::Bin/lib";
+use tools;
 
 if ( not env_exists('TRAVIS') ) {
   diag('Is not running under travis!');
   exit 1;
 }
-
+if ( not env_exists('STERILIZE_ENV') ) {
+  diag("\e[31mSTERILIZE_ENV is not set, skipping, because this is probably Travis's Default ( and unwanted ) target");
+  exit 0;
+}
+if ( env_is( 'TRAVIS_BRANCH', 'master' ) and env_is( 'TRAVIS_PERL_VERSION', '5.8' ) ) {
+  diag("\e[31mscript skipped on 5.8 on master\e[32m, because \@Git, a dependency of \@Author::KENTNL, is unavailble on 5.8\e[0m");
+  exit 0;
+}
 if ( env_is( 'TRAVIS_BRANCH', 'master' ) ) {
   my $xtest = safe_exec_nonfatal( 'dzil', 'xtest' );
   my $test  = safe_exec_nonfatal( 'dzil', 'test' );

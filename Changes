@@ -1,5 +1,71 @@
 Release history for Path-FindDev
 
+0.4.2 2013-11-09T16:06:27Z
+ [00 Bugfix]
+ - Minimum perl declared is now 5.8, and tested to work on 5.8
+ - However, the version scheme is x.y.z still, which means if you want to
+   depend on a specific version in Perl code, you'll need a recent enough
+   version.pm to make it work.
+
+ [Dependencies::Added / develop requires]
+ - Dist::Zilla::Plugin::Author::KENTNL::MinimumPerl
+ - Dist::Zilla::Plugin::Authority 1.006
+ - Dist::Zilla::Plugin::AutoPrereqs
+ - Dist::Zilla::Plugin::CheckExtraTests
+ - Dist::Zilla::Plugin::ConfirmRelease
+ - Dist::Zilla::Plugin::EOLTests
+ - Dist::Zilla::Plugin::Git::Check
+ - Dist::Zilla::Plugin::Git::Commit
+ - Dist::Zilla::Plugin::Git::CommitBuild
+ - Dist::Zilla::Plugin::Git::GatherDir
+ - Dist::Zilla::Plugin::Git::NextVersion
+ - Dist::Zilla::Plugin::Git::Tag
+ - Dist::Zilla::Plugin::GithubMeta
+ - Dist::Zilla::Plugin::License
+ - Dist::Zilla::Plugin::Manifest
+ - Dist::Zilla::Plugin::ManifestSkip
+ - Dist::Zilla::Plugin::MetaConfig
+ - Dist::Zilla::Plugin::MetaData::BuiltWith
+ - Dist::Zilla::Plugin::MetaJSON
+ - Dist::Zilla::Plugin::MetaProvides::Package 1.14000001
+ - Dist::Zilla::Plugin::MetaTests
+ - Dist::Zilla::Plugin::MetaYAML
+ - Dist::Zilla::Plugin::ModuleBuild
+ - Dist::Zilla::Plugin::NextRelease
+ - Dist::Zilla::Plugin::PkgVersion
+ - Dist::Zilla::Plugin::PodCoverageTests
+ - Dist::Zilla::Plugin::PodSyntaxTests
+ - Dist::Zilla::Plugin::PodWeaver
+ - Dist::Zilla::Plugin::Prereqs
+ - Dist::Zilla::Plugin::Prereqs::MatchInstalled
+ - Dist::Zilla::Plugin::PruneCruft
+ - Dist::Zilla::Plugin::ReadmeAnyFromPod
+ - Dist::Zilla::Plugin::ReadmeFromPod
+ - Dist::Zilla::Plugin::ReportVersions::Tiny
+ - Dist::Zilla::Plugin::Test::CPAN::Changes
+ - Dist::Zilla::Plugin::Test::Compile
+ - Dist::Zilla::Plugin::Test::Kwalitee
+ - Dist::Zilla::Plugin::Test::MinimumVersion
+ - Dist::Zilla::Plugin::Test::Perl::Critic
+ - Dist::Zilla::Plugin::TestRelease
+ - Dist::Zilla::Plugin::Twitter
+ - Dist::Zilla::Plugin::UploadToCPAN
+
+ [Dependencies::Changed / build requires]
+ - Module::Build 0.4007 → 0.4008
+
+ [Dependencies::Changed / configure requires]
+ - Module::Build 0.4007 → 0.4008
+
+ [Dependencies::Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.000000 → 2.001000
+
+ [Dependencies::Changed / runtime requires]
+ - perl v5.10.0 → 5.006
+
+ [Dependencies::Changed / test requires]
+ - Test::More 0.99 → 1.001002
+
 0.4.1 2013-10-23T19:08:22Z
  [00 Bugfix]
  - System path test added in 0.4.0 disabled due to potential security risks
