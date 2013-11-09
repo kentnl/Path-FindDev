@@ -1,6 +1,6 @@
 Release history for Path-FindDev
 
-0.4.2 2013-11-09T08:29:20Z
+0.4.2 2013-11-09T16:04:52Z
  [00 Bugfix]
  - Minimum perl declared is now 5.8, and tested to work on 5.8
  - However, the version scheme is x.y.z still, which means if you want to

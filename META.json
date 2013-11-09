@@ -129,6 +129,9 @@
    },
    "version" : "0.4.2",
    "x_BuiltWith" : {
+      "failures" : {
+         "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "module was not found in INC"
+      },
       "modules" : {
          "Carp" : "1.32",
          "Class::Tiny" : "0.012",
@@ -175,11 +178,10 @@
          "Dist::Zilla::Plugin::Twitter" : "0.023",
          "Dist::Zilla::Plugin::UploadToCPAN" : "5.006",
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.001000",
-         "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "1.7.2",
-         "File::Spec" : "3.40",
+         "File::Spec" : "3.45",
          "FindBin" : "1.51",
          "IO::Handle" : "1.35",
-         "IPC::Open3" : "1.15",
+         "IPC::Open3" : "1.16",
          "Module::Build" : "0.4008",
          "Path::IsDev" : "1.000000",
          "Path::IsDev::Object" : "1.000000",
@@ -195,19 +197,19 @@
          "Test::Pod::Coverage" : "1.08",
          "strict" : "1.08",
          "version" : "0.9904",
-         "warnings" : "1.18"
+         "warnings" : "1.20"
       },
       "perl" : {
-         "original" : "v5.19.3",
+         "original" : "v5.19.5",
          "qv" : 1,
          "version" : [
             5,
             19,
-            3
+            5
          ]
       },
       "perl-config" : {
-         "gccversion" : "4.7.2",
+         "gccversion" : "4.7.3",
          "myarchname" : "x86_64-linux",
          "osname" : "linux"
       },
@@ -216,7 +218,7 @@
    },
    "x_Dist_Zilla" : {
       "perl" : {
-         "version" : "5.019003"
+         "version" : "5.019005"
       },
       "plugins" : [
          {
