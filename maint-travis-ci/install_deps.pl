@@ -24,8 +24,8 @@ if ( env_true('DEVELOPER_DEPS') ) {
   push @params, '--dev';
 }
 if ( env_is( 'TRAVIS_BRANCH', 'master' ) ) {
-  cpanm( @params, 'Dist::Zilla', 'Capture::Tiny', 'Pod::Weaver' );
-  cpanm( @params, '--dev',       'Dist::Zilla~<5.002',   'Pod::Weaver' );
+  cpanm( @params, 'Dist::Zilla', 'Capture::Tiny',      'Pod::Weaver' );
+  cpanm( @params, '--dev',       'Dist::Zilla~>5.002', 'Pod::Weaver' );
   safe_exec( 'git', 'config', '--global', 'user.email', 'kentfredric+travisci@gmail.com' );
   safe_exec( 'git', 'config', '--global', 'user.name',  'Travis CI ( On behalf of Kent Fredric )' );
 
@@ -49,8 +49,17 @@ else {
   if ( env_true('AUTHOR_TESTING') or env_true('RELEASE_TESTING') ) {
     my $prereqs = parse_meta_json()->effective_prereqs;
     my $reqs = $prereqs->requirements_for( 'develop', 'requires' );
+    my @wanted;
 
-    cpanm( @params, map { $_ . '~' . $reqs->requirements_for_module($_) } $reqs->required_modules );
+    for my $want ( $reqs->required_modules ) {
+      my $module_requirement = $reqs->requirements_for_module($want);
+      if ( $module_requirement =~ /^\d/ ) {
+        push @wanted, $want . '~>=' . $module_requirement;
+        next;
+      }
+      push @wanted, $want . '~' . $module_requirement;
+    }
+    cpanm( @params, @wanted );
 
   }
 }
