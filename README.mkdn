@@ -8,7 +8,7 @@ version 0.4.2
 
 # DESCRIPTION
 
-This package is mostly a glue layer around [`Path::IsDev`](http://search.cpan.org/perldoc?Path::IsDev)
+This package is mostly a glue layer around [`Path::IsDev`](https://metacpan.org/pod/Path::IsDev)
 with a few directory walking tricks.
 
     use Path::FindDev qw( find_dev );
@@ -26,13 +26,13 @@ with a few directory walking tricks.
     my $result = find_dev('/some/path');
 
 If a `dev` directory is found at, or above, `/some/path`, it will be returned
-as a [`Path::Tiny`](http://search.cpan.org/perldoc?Path::Tiny)
+as a [`Path::Tiny`](https://metacpan.org/pod/Path::Tiny)
 
 If you pass configurations to import:
 
     use Path::FindDev find_dev => { set => $someset };
 
-Then the exported `find_dev` will pass that set name to [`Path::IsDev`](http://search.cpan.org/perldoc?Path::IsDev).
+Then the exported `find_dev` will pass that set name to [`Path::IsDev`](https://metacpan.org/pod/Path::IsDev).
 
 Though you should only do this if
 
