@@ -7,10 +7,10 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Module::Build" => "0.4007"
+    "Module::Build" => "0.4008"
   },
   "configure_requires" => {
-    "Module::Build" => "0.4007"
+    "Module::Build" => "0.4008"
   },
   "dist_abstract" => "Find a development path somewhere in an upper hierarchy.",
   "dist_author" => [
@@ -36,20 +36,22 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
-    "Capture::Tiny" => 0,
+    "File::Spec" => 0,
     "FindBin" => 0,
-    "Test::More" => "0.99",
-    "blib" => 0
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
+    "Test::More" => "1.001002"
   }
 );
 
 
 my %fallback_build_requires = (
-  "Capture::Tiny" => 0,
+  "File::Spec" => 0,
   "FindBin" => 0,
-  "Module::Build" => "0.4007",
-  "Test::More" => "0.99",
-  "blib" => 0
+  "IO::Handle" => 0,
+  "IPC::Open3" => 0,
+  "Module::Build" => "0.4008",
+  "Test::More" => "1.001002"
 );
 
 

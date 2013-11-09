@@ -48,18 +48,19 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
-eval { $v .= pmver('Capture::Tiny','any version') };
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Class::Tiny','0.010') };
+eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('FindBin','any version') };
-eval { $v .= pmver('Module::Build','0.4007') };
+eval { $v .= pmver('IO::Handle','any version') };
+eval { $v .= pmver('IPC::Open3','any version') };
+eval { $v .= pmver('Module::Build','0.4008') };
 eval { $v .= pmver('Path::IsDev','v0.2.2') };
 eval { $v .= pmver('Path::IsDev::Object','any version') };
 eval { $v .= pmver('Path::Tiny','0.038') };
 eval { $v .= pmver('Scalar::Util','any version') };
 eval { $v .= pmver('Sub::Exporter','any version') };
-eval { $v .= pmver('Test::More','0.99') };
-eval { $v .= pmver('blib','any version') };
+eval { $v .= pmver('Test::More','1.001002') };
 eval { $v .= pmver('strict','any version') };
 eval { $v .= pmver('warnings','any version') };
 
