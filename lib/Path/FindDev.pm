@@ -5,6 +5,8 @@ package Path::FindDev;
 $Path::FindDev::VERSION = '0.4.3';
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

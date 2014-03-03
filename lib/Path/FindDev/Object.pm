@@ -5,6 +5,8 @@ package Path::FindDev::Object;
 $Path::FindDev::Object::VERSION = '0.4.3';
 # ABSTRACT: Object oriented guts to C<FindDev>
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
