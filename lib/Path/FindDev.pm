@@ -68,7 +68,7 @@ use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 =cut
 
 sub _build_find_dev {
-  my ( $class, $name, $arg ) = @_;
+  my ( undef, undef, $arg ) = @_;
 
   my $object;
   return sub {
