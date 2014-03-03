@@ -2,17 +2,65 @@ use strict;
 use warnings;
 
 package Path::FindDev;
-BEGIN {
-  $Path::FindDev::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Path::FindDev::VERSION = '0.4.2';
-}
-
+$Path::FindDev::VERSION = '0.4.3';
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
+
+
+
+
+
+
+
+
+
+
 
 
 sub _build_find_dev {
@@ -28,6 +76,38 @@ sub _build_find_dev {
     return $object->find_dev($path);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 *find_dev = _build_find_dev( __PACKAGE__, 'find_dev', {} );
@@ -46,7 +126,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.4.2
+version 0.4.3
 
 =head1 DESCRIPTION
 
@@ -140,7 +220,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
