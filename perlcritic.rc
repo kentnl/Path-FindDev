@@ -124,7 +124,6 @@ allow_includes = 1
 
 [Documentation::PodSpelling]
 spell_command = aspell list --lang en_US
-stop_words = Changelog Config IsDev Makefile accessor accessors basename behaviours devdir introspectable pluggable
 
 [Documentation::ProhibitAdjacentLinks]
 
@@ -413,7 +412,7 @@ base_max = 130
 
 [ValuesAndExpressions::RequireNumberSeparators]
 
-[ValuesAndExpressions::RequireNumericVersion]
+[-ValuesAndExpressions::RequireNumericVersion]
 
 [ValuesAndExpressions::RequireQuotedHeredocTerminator]
 

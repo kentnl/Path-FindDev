@@ -1,5 +1,7 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Path::FindDev;
 $Path::FindDev::VERSION = '0.4.3';
@@ -66,17 +68,17 @@ use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
 
 sub _build_find_dev {
-  my ( $class, $name, $arg ) = @_;
+  my ( undef, undef, $arg ) = @_;
 
-  my $object;
+  my $finddev_object;
   return sub {
     my ($path) = @_;
-    $object ||= do {
+    $finddev_object ||= do {
       require Path::FindDev::Object;
       Path::FindDev::Object->new($arg);
     };
-    return $object->find_dev($path);
-    }
+    return $finddev_object->find_dev($path);
+  };
 }
 
 

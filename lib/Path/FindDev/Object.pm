@@ -1,9 +1,11 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Path::FindDev::Object;
 $Path::FindDev::Object::VERSION = '0.4.3';
-# ABSTRACT: Object oriented guts to C<FindDev>
+# ABSTRACT: Object oriented guts to FindDev
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -231,15 +233,15 @@ sub find_dev {
 FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
-    if ( $result->{type} eq 'next' ) {
+    if ( 'next' eq $result->{type} ) {
       $self->_debug( 'Trying ../ : ' . $search_root->parent );
       $search_root = $search_root->parent;
       redo FLOW;
     }
-    if ( $result->{type} eq 'stop' ) {
+    if ( 'stop' eq $result->{type} ) {
       return;
     }
-    if ( $result->{type} eq 'found' ) {
+    if ( 'found' eq $result->{type} ) {
       return $result->{path};
     }
     $self->_error( 'Unexpected end of flow control with _step response type' . $result->{type} );
@@ -256,7 +258,7 @@ __END__
 
 =head1 NAME
 
-Path::FindDev::Object - Object oriented guts to C<FindDev>
+Path::FindDev::Object - Object oriented guts to FindDev
 
 =head1 VERSION
 
