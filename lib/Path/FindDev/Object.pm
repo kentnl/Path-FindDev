@@ -5,7 +5,7 @@ use utf8;
 
 package Path::FindDev::Object;
 
-# ABSTRACT: Object oriented guts to C<FindDev>
+# ABSTRACT: Object oriented guts to FindDev
 
 # AUTHORITY
 
