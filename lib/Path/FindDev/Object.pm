@@ -233,15 +233,15 @@ sub find_dev {
 FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
-    if ( $result->{type} eq 'next' ) {
+    if ( 'next' eq $result->{type} ) {
       $self->_debug( 'Trying ../ : ' . $search_root->parent );
       $search_root = $search_root->parent;
       redo FLOW;
     }
-    if ( $result->{type} eq 'stop' ) {
+    if ( 'stop' eq $result->{type} ) {
       return;
     }
-    if ( $result->{type} eq 'found' ) {
+    if ( 'found' eq $result->{type} ) {
       return $result->{path};
     }
     $self->_error( 'Unexpected end of flow control with _step response type' . $result->{type} );
