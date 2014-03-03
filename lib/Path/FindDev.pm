@@ -70,15 +70,15 @@ use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 sub _build_find_dev {
   my ( undef, undef, $arg ) = @_;
 
-  my $object;
+  my $finddev_object;
   return sub {
     my ($path) = @_;
-    $object ||= do {
+    $finddev_object ||= do {
       require Path::FindDev::Object;
       Path::FindDev::Object->new($arg);
     };
-    return $object->find_dev($path);
-    }
+    return $finddev_object->find_dev($path);
+  };
 }
 
 =func find_dev
