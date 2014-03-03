@@ -4,7 +4,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 # VERSION
 
-version 0.4.2
+version 0.4.3
 
 # DESCRIPTION
 
@@ -77,20 +77,13 @@ No more!
 ^ Should work, regardless of which test you put it in, and regardless
 of what `$CWD` happens to be when you call it.
 
-{
-    "namespace":"Path::FindDev",
-    "interface":"exporter"
-}
-
-
-
 # AUTHOR
 
 Kent Fredric <kentfredric@gmail.com>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
