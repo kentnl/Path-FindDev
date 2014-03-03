@@ -5,6 +5,8 @@ package Path::FindDev;
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
+# AUTHORITY
+
 =head1 DESCRIPTION
 
 This package is mostly a glue layer around L<< C<Path::IsDev>|Path::IsDev >>

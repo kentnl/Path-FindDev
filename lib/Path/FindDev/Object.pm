@@ -5,6 +5,8 @@ package Path::FindDev::Object;
 
 # ABSTRACT: Object oriented guts to C<FindDev>
 
+# AUTHORITY
+
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
