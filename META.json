@@ -112,11 +112,11 @@
    "provides" : {
       "Path::FindDev" : {
          "file" : "lib/Path/FindDev.pm",
-         "version" : "v0.4.3"
+         "version" : "v0.5.0"
       },
       "Path::FindDev::Object" : {
          "file" : "lib/Path/FindDev/Object.pm",
-         "version" : "v0.4.3"
+         "version" : "v0.5.0"
       }
    },
    "release_status" : "stable",
@@ -131,7 +131,7 @@
          "web" : "https://github.com/kentfredric/Path-FindDev"
       }
    },
-   "version" : "0.4.3",
+   "version" : "0.5.0",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Meta" : "2.133380",
