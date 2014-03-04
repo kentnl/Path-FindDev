@@ -6,6 +6,11 @@ Release history for Path-FindDev
  - No other noteworthy changes
  - Still as broken as always
 
+ [Dependencies::Aggregate]
+ - 5.008 - 49 → 44
+ - 5.010 - 32 → 33
+ - 5.019 - 18 → 17
+
  [Dependencies::Stats]
  - Dependencies changed since 0.4.2, see Changes.deps{,.all,.dev} for
    details
