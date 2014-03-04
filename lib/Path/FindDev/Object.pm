@@ -1,18 +1,39 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Path::FindDev::Object;
-BEGIN {
-  $Path::FindDev::Object::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Path::FindDev::Object::VERSION = '0.4.2';
-}
+$Path::FindDev::Object::VERSION = '0.5.0';
+# ABSTRACT: Object oriented guts to FindDev
 
-# ABSTRACT: Object oriented guts to C<FindDev>
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -27,10 +48,34 @@ use Class::Tiny 0.010 'set', 'uplevel_max', {
 };
 
 
+
+
+
+
+
+
+
 ## no critic (RequireArgUnpacking)
 
 
+
+
+
+
+
 sub has_set { return exists $_[0]->{set} }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38,8 +83,35 @@ sub has_uplevel_max { return exists $_[0]->{uplevel_max} }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 my $instances   = {};
 my $instance_id = 0;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub _instance_id {
@@ -50,6 +122,14 @@ sub _instance_id {
   $instances->{$addr} = sprintf '%x', $instance_id++;
   return $instances->{$addr};
 }
+
+
+
+
+
+
+
+
 
 
 sub BUILD {
@@ -65,12 +145,30 @@ sub BUILD {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 sub _debug {
   my ( $self, $message ) = @_;
   return unless $DEBUG;
   my $id = $self->_instance_id;
   return *STDERR->printf( qq{[Path::FindDev=%s] %s\n}, $id, $message );
 }
+
+
+
+
+
+
+
 
 
 sub _error {
@@ -80,6 +178,20 @@ sub _error {
   require Carp;
   Carp::croak($f_message);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub _step {
@@ -104,6 +216,13 @@ sub _step {
 }
 
 
+
+
+
+
+
+
+
 sub find_dev {
   my ( $self, $path ) = @_;
   require Path::Tiny;
@@ -114,15 +233,15 @@ sub find_dev {
 FLOW: {
     $uplevels++;
     my $result = $self->_step( $search_root, \$dev_levels, \$uplevels );
-    if ( $result->{type} eq 'next' ) {
+    if ( 'next' eq $result->{type} ) {
       $self->_debug( 'Trying ../ : ' . $search_root->parent );
       $search_root = $search_root->parent;
       redo FLOW;
     }
-    if ( $result->{type} eq 'stop' ) {
+    if ( 'stop' eq $result->{type} ) {
       return;
     }
-    if ( $result->{type} eq 'found' ) {
+    if ( 'found' eq $result->{type} ) {
       return $result->{path};
     }
     $self->_error( 'Unexpected end of flow control with _step response type' . $result->{type} );
@@ -139,11 +258,11 @@ __END__
 
 =head1 NAME
 
-Path::FindDev::Object - Object oriented guts to C<FindDev>
+Path::FindDev::Object - Object oriented guts to FindDev
 
 =head1 VERSION
 
-version 0.4.2
+version 0.5.0
 
 =head1 SYNOPSIS
 
@@ -264,7 +383,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
