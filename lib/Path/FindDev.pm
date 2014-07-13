@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Path::FindDev;
-$Path::FindDev::VERSION = '0.5.1';
+
+our $VERSION = '0.5.1';
+
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
