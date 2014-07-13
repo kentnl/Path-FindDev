@@ -1,10 +1,13 @@
 Release history for Path-FindDev
 
 {{$NEXT}}
+ [00 Trivial]
+ - Misc packaging updates.
+
  [Dependencies::Stats]
  - Dependencies changed since 0.5.0, see misc/*.deps* for details
  - configure: (recommends: ↑1)
- - develop: +2 -3 (suggests: +2 -1)
+ - develop: +3 -3 (suggests: +2 -1)
  - test: (recommends: ↑2)
 
 0.5.0 2014-03-04T11:03:22Z
