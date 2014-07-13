@@ -5,6 +5,8 @@ use utf8;
 
 package Path::FindDev::Object;
 
+our $VERSION = '0.5.1';
+
 # ABSTRACT: Object oriented guts to FindDev
 
 # AUTHORITY
