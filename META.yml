@@ -21,10 +21,10 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.5.1
+    version: v0.5.2
   Path::FindDev::Object:
     file: lib/Path/FindDev/Object.pm
-    version: v0.5.1
+    version: v0.5.2
 requires:
   Carp: '0'
   Class::Tiny: '0.010'
@@ -41,7 +41,7 @@ resources:
   bugtracker: https://github.com/kentfredric/Path-FindDev/issues
   homepage: https://github.com/kentfredric/Path-FindDev
   repository: https://github.com/kentfredric/Path-FindDev.git
-version: 0.5.1
+version: 0.5.2
 x_BuiltWith:
   modules:
     CPAN::Meta: '2.141520'
@@ -434,7 +434,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: 0.5.1-source
+          tag: 0.5.2-source
           tag_format: '%v-source'
           tag_message: v%v
           time_zone: local
@@ -488,7 +488,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: releases
           signed: 0
-          tag: 0.5.1
+          tag: 0.5.2
           tag_format: '%v'
           tag_message: v%v
           time_zone: local

@@ -5,7 +5,7 @@ use utf8;
 
 package Path::FindDev::Object;
 
-our $VERSION = '0.5.1';
+our $VERSION = '0.5.2';
 
 # ABSTRACT: Object oriented guts to FindDev
 
@@ -264,7 +264,7 @@ Path::FindDev::Object - Object oriented guts to FindDev
 
 =head1 VERSION
 
-version 0.5.1
+version 0.5.2
 
 =head1 SYNOPSIS
 
