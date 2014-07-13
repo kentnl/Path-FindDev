@@ -1,6 +1,8 @@
 This file contains changes in OPTIONAL dependencies for standard CPAN phases (configure/build/runtime/test)
 
-0.5.1
+0.5.2
+
+0.5.1 2014-07-13T17:54:11Z
  [Changed / configure recommends]
  - ExtUtils::MakeMaker 6.90 → 6.98
 
