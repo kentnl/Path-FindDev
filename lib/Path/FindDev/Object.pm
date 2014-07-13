@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Path::FindDev::Object;
-$Path::FindDev::Object::VERSION = '0.5.0';
+$Path::FindDev::Object::VERSION = '0.5.1';
 # ABSTRACT: Object oriented guts to FindDev
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -262,7 +262,7 @@ Path::FindDev::Object - Object oriented guts to FindDev
 
 =head1 VERSION
 
-version 0.5.0
+version 0.5.1
 
 =head1 SYNOPSIS
 
