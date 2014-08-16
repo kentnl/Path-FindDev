@@ -11,51 +11,6 @@ our $VERSION = '0.5.2';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
 
@@ -180,6 +135,16 @@ Additionally, you can call find_dev directly:
 
 Which by design inhibits your capacity to specify an alternative set in code.
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev",
+    "interface":"exporter"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 EXAMPLE USE-CASES
 
 Have you ever found yourself doing
@@ -209,16 +174,6 @@ No more!
 
 ^ Should work, regardless of which test you put it in, and regardless
 of what C<$CWD> happens to be when you call it.
-
-=begin MetaPOD::JSON v1.1.0
-
-{
-    "namespace":"Path::FindDev",
-    "interface":"exporter"
-}
-
-
-=end MetaPOD::JSON
 
 =head1 AUTHOR
 
