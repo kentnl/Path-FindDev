@@ -1,6 +1,6 @@
 Release history for Path-FindDev
 
-0.5.2 2014-08-16T04:10:38Z
+0.5.2 2014-08-16T04:12:22Z
  [00 Trivial]
  - CPANDAY!
  - No code changes.
@@ -20,6 +20,7 @@ Release history for Path-FindDev
 
  [Metadata]
  - move to kentnl org.
+ - Show 2x contributors
 
  [Misc]
  - Improve source side POD to reduce build side whitespace.
