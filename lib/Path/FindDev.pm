@@ -5,56 +5,11 @@ use utf8;
 
 package Path::FindDev;
 
-our $VERSION = '0.5.1';
+our $VERSION = '0.5.2';
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
@@ -132,7 +87,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.5.1
+version 0.5.2
 
 =head1 DESCRIPTION
 
@@ -180,6 +135,16 @@ Additionally, you can call find_dev directly:
 
 Which by design inhibits your capacity to specify an alternative set in code.
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Path::FindDev",
+    "interface":"exporter"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 EXAMPLE USE-CASES
 
 Have you ever found yourself doing
@@ -209,16 +174,6 @@ No more!
 
 ^ Should work, regardless of which test you put it in, and regardless
 of what C<$CWD> happens to be when you call it.
-
-=begin MetaPOD::JSON v1.1.0
-
-{
-    "namespace":"Path::FindDev",
-    "interface":"exporter"
-}
-
-
-=end MetaPOD::JSON
 
 =head1 AUTHOR
 

@@ -5,7 +5,7 @@ use utf8;
 
 package Path::FindDev::Object;
 
-our $VERSION = '0.5.1';
+our $VERSION = '0.5.2';
 
 # ABSTRACT: Object oriented guts to FindDev
 
@@ -13,19 +13,6 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 our $ENV_KEY_DEBUG = 'PATH_FINDDEV_DEBUG';
 our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -264,7 +251,7 @@ Path::FindDev::Object - Object oriented guts to FindDev
 
 =head1 VERSION
 
-version 0.5.1
+version 0.5.2
 
 =head1 SYNOPSIS
 
