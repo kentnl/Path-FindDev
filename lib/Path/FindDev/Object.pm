@@ -5,7 +5,7 @@ use utf8;
 
 package Path::FindDev::Object;
 
-our $VERSION = '0.5.2';
+our $VERSION = '0.5.3';
 
 # ABSTRACT: Object oriented guts to FindDev
 
