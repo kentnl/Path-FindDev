@@ -29,4 +29,4 @@ twitter_hash_tags = #perl #cpan
 
 [Prereqs / RuntimeRequires]
 Path::IsDev = 0.2.2
-Path::Tiny  = 0.038 ; is_rootdir
+Path::Tiny  = 0.054 ; compatibility with FindBin::libs on Windows
