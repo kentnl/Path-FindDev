@@ -1,6 +1,9 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.5.2
+ [Added / develop requires]
+ - Dist::Zilla::Plugin::Git::Contributors 0.006
+
  [Added / test requires]
  - File::Spec
 
