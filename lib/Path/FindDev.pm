@@ -5,7 +5,7 @@ use utf8;
 
 package Path::FindDev;
 
-our $VERSION = '0.5.2';
+our $VERSION = '0.5.3';
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
@@ -87,7 +87,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.5.2
+version 0.5.3
 
 =head1 DESCRIPTION
 

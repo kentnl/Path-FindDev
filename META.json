@@ -111,11 +111,11 @@
    "provides" : {
       "Path::FindDev" : {
          "file" : "lib/Path/FindDev.pm",
-         "version" : "v0.5.2"
+         "version" : "v0.5.3"
       },
       "Path::FindDev::Object" : {
          "file" : "lib/Path/FindDev/Object.pm",
-         "version" : "v0.5.2"
+         "version" : "v0.5.3"
       }
    },
    "release_status" : "stable",
@@ -130,7 +130,7 @@
          "web" : "https://github.com/kentnl/Path-FindDev"
       }
    },
-   "version" : "0.5.2",
+   "version" : "0.5.3",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Meta" : "2.142060",
@@ -630,7 +630,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "0.5.2-source",
+                  "tag" : "0.5.3-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -701,7 +701,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "0.5.2",
+                  "tag" : "0.5.3",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
