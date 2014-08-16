@@ -11,51 +11,6 @@ our $VERSION = '0.5.2';
 
 # AUTHORITY
 
-=head1 DESCRIPTION
-
-This package is mostly a glue layer around L<< C<Path::IsDev>|Path::IsDev >>
-with a few directory walking tricks.
-
-    use Path::FindDev qw( find_dev );
-
-    if ( my $root = find_dev('/some/path/to/something/somewhere')) {
-        print "development root = $root";
-    } else {
-        print "No development root :(";
-    }
-
-=head1 EXAMPLE USE-CASES
-
-Have you ever found yourself doing
-
-    use FindBin;
-    use lib "$FindBin::Bin/../../../tlib"
-
-In a test?
-
-Have you found yourself paranoid of file-system semantics and tried
-
-    use FindBin;
-    use Path::Tiny qw(path)
-    use lib path($FindBin::Bin)->parent->parent->parent->child('tlib')->stringify;
-
-Have you ever done either of the above in a test, only to
-find you've needed to move the test to a deeper hierarchy,
-and thus, need to re-write all your path resolution?
-
-Have you ever had this problem for multiple files?
-
-No more!
-
-    use FindBin;
-    use Path::FindDev qw(find_dev);
-    use lib find_dev($FindBin::Bin)->child('t','tlib')->stringify;
-
-^ Should work, regardless of which test you put it in, and regardless
-of what C<$CWD> happens to be when you call it.
-
-=cut
-
 use Sub::Exporter -setup => { exports => [ find_dev => \&_build_find_dev, ] };
 
 =begin MetaPOD::JSON v1.1.0
@@ -119,3 +74,48 @@ Which by design inhibits your capacity to specify an alternative set in code.
 *find_dev = _build_find_dev( __PACKAGE__, 'find_dev', {} );
 
 1;
+
+=head1 DESCRIPTION
+
+This package is mostly a glue layer around L<< C<Path::IsDev>|Path::IsDev >>
+with a few directory walking tricks.
+
+    use Path::FindDev qw( find_dev );
+
+    if ( my $root = find_dev('/some/path/to/something/somewhere')) {
+        print "development root = $root";
+    } else {
+        print "No development root :(";
+    }
+
+=head1 EXAMPLE USE-CASES
+
+Have you ever found yourself doing
+
+    use FindBin;
+    use lib "$FindBin::Bin/../../../tlib"
+
+In a test?
+
+Have you found yourself paranoid of file-system semantics and tried
+
+    use FindBin;
+    use Path::Tiny qw(path)
+    use lib path($FindBin::Bin)->parent->parent->parent->child('tlib')->stringify;
+
+Have you ever done either of the above in a test, only to
+find you've needed to move the test to a deeper hierarchy,
+and thus, need to re-write all your path resolution?
+
+Have you ever had this problem for multiple files?
+
+No more!
+
+    use FindBin;
+    use Path::FindDev qw(find_dev);
+    use lib find_dev($FindBin::Bin)->child('t','tlib')->stringify;
+
+^ Should work, regardless of which test you put it in, and regardless
+of what C<$CWD> happens to be when you call it.
+
+=cut

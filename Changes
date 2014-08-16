@@ -6,6 +6,7 @@ Release history for Path-FindDev
  - No code changes.
  - metadata updated.
  - tests updated.
+ - whitespace reduced.
 
  [Dependencies::Noteworthy]
  - use newer Path::Tiny to avoid bug GH #7 ( Thanks Chorny )
@@ -20,6 +21,9 @@ Release history for Path-FindDev
  [Metadata]
  - move to kentnl org.
  - Show 2x contributors
+
+ [Misc]
+ - Improve source side POD to reduce build side whitespace.
 
  [Tests]
  - updated Test::ReportPrereqs

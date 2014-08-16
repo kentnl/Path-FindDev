@@ -26,19 +26,6 @@ our $DEBUG = ( exists $ENV{$ENV_KEY_DEBUG} ? $ENV{$ENV_KEY_DEBUG} : undef );
 
 =cut
 
-=head1 DESCRIPTION
-
-This module implements the innards of L<< C<Path::FindDev>|Path::FindDev >>, and is
-only recommended for use if the Exporter C<API> is insufficient for your needs.
-
-=head1 SYNOPSIS
-
-    require Path::FindDev::Object;
-    my $finder = Path::FindDev::Object->new();
-    my $dev = $finder->find_dev($path);
-
-=cut
-
 use Class::Tiny 0.010 'set', 'uplevel_max', {
   nest_retry => sub {
     return 0;
@@ -251,3 +238,16 @@ FLOW: {
   return;
 }
 1;
+
+=head1 DESCRIPTION
+
+This module implements the innards of L<< C<Path::FindDev>|Path::FindDev >>, and is
+only recommended for use if the Exporter C<API> is insufficient for your needs.
+
+=head1 SYNOPSIS
+
+    require Path::FindDev::Object;
+    my $finder = Path::FindDev::Object->new();
+    my $dev = $finder->find_dev($path);
+
+=cut
