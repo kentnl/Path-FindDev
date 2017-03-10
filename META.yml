@@ -7,10 +7,10 @@ build_requires:
   File::Spec: '0'
   FindBin: '0'
   Test::More: '0'
-  perl: '5.008'
+  perl: '5.006'
 configure_requires:
   ExtUtils::MakeMaker: '0'
-  perl: '5.008'
+  perl: '5.006'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 6.009, CPAN::Meta::Converter version 2.150010'
 license: perl
@@ -35,9 +35,8 @@ requires:
   Path::Tiny: '0.054'
   Scalar::Util: '0'
   Sub::Exporter: '0'
-  perl: '5.008'
+  perl: '5.006'
   strict: '0'
-  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/Path-FindDev/issues
