@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "FindBin" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "v0.5.3",
+  "VERSION" => "v0.5.4",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }

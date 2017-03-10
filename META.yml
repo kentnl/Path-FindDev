@@ -21,10 +21,10 @@ name: Path-FindDev
 provides:
   Path::FindDev:
     file: lib/Path/FindDev.pm
-    version: v0.5.3
+    version: v0.5.4
   Path::FindDev::Object:
     file: lib/Path/FindDev/Object.pm
-    version: v0.5.3
+    version: v0.5.4
 recommends:
   Path::Tiny: '0.058'
 requires:
@@ -42,4 +42,4 @@ resources:
   bugtracker: https://github.com/kentnl/Path-FindDev/issues
   homepage: https://github.com/kentnl/Path-FindDev
   repository: https://github.com/kentnl/Path-FindDev.git
-version: v0.5.3
+version: v0.5.4

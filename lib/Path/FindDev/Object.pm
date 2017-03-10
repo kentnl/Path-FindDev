@@ -4,7 +4,7 @@ use warnings;
 
 package Path::FindDev::Object;
 
-our $VERSION = 'v0.5.3';
+our $VERSION = 'v0.5.4';
 
 # ABSTRACT: Object oriented guts to FindDev
 
@@ -250,7 +250,7 @@ Path::FindDev::Object - Object oriented guts to FindDev
 
 =head1 VERSION
 
-version v0.5.3
+version v0.5.4
 
 =head1 SYNOPSIS
 

@@ -129,11 +129,11 @@
    "provides" : {
       "Path::FindDev" : {
          "file" : "lib/Path/FindDev.pm",
-         "version" : "v0.5.3"
+         "version" : "v0.5.4"
       },
       "Path::FindDev::Object" : {
          "file" : "lib/Path/FindDev/Object.pm",
-         "version" : "v0.5.3"
+         "version" : "v0.5.4"
       }
    },
    "release_status" : "stable",
@@ -148,7 +148,7 @@
          "web" : "https://github.com/kentnl/Path-FindDev"
       }
    },
-   "version" : "v0.5.3",
+   "version" : "v0.5.4",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -658,7 +658,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v0.5.3-source",
+                  "tag" : "v0.5.4-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v"
                },
@@ -752,7 +752,7 @@
                   "branch" : "releases",
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v0.5.3",
+                  "tag" : "v0.5.4",
                   "tag_format" : "%v",
                   "tag_message" : "v%v"
                },
