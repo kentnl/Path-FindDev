@@ -3,6 +3,7 @@ Release history for Path-FindDev
 {{$NEXT}}
  - Bugfix: Avoid test failures due to -Ddefault_inc_excludes_dot
  - Add "v" to version due to upstream requirements
+ - Tests made more portable to older Test::More
 
  [Dependencies::Stats]
  - Dependencies changed since 0.5.2, see misc/*.deps* for details
