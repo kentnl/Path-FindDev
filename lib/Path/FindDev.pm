@@ -4,7 +4,7 @@ use warnings;
 
 package Path::FindDev;
 
-our $VERSION = 'v0.5.3';
+our $VERSION = 'v0.5.4';
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 

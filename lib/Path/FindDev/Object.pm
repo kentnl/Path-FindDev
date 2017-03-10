@@ -4,7 +4,7 @@ use warnings;
 
 package Path::FindDev::Object;
 
-our $VERSION = 'v0.5.3';
+our $VERSION = 'v0.5.4';
 
 # ABSTRACT: Object oriented guts to FindDev
 

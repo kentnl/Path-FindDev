@@ -1,6 +1,8 @@
 Release history for Path-FindDev
 
 {{$NEXT}}
+
+v0.5.3 2017-03-10T07:02:09Z c9c9198
  - Bugfix: Avoid test failures due to -Ddefault_inc_excludes_dot
  - Add "v" to version due to upstream requirements
  - Tests made more portable to older Test::More
