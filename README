@@ -1,85 +1,37 @@
-NAME
-    Path::FindDev - Find a development path somewhere in an upper hierarchy.
+Path::FindDev
 
-VERSION
-    version 0.5.2
+This package is mostly a glue layer around "Path::IsDev" with a few
+directory walking tricks.
 
-DESCRIPTION
-    This package is mostly a glue layer around "Path::IsDev" with a few
-    directory walking tricks.
+    use Path::FindDev qw( find_dev );
 
-        use Path::FindDev qw( find_dev );
+    if ( my $root = find_dev('/some/path/to/something/somewhere')) {
+        print "development root = $root";
+    } else {
+        print "No development root :(";
+    }
 
-        if ( my $root = find_dev('/some/path/to/something/somewhere')) {
-            print "development root = $root";
-        } else {
-            print "No development root :(";
-        }
+INSTALLATION
 
-FUNCTIONS
-  find_dev
-        my $result = find_dev('/some/path');
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
 
-    If a "dev" directory is found at, or above, "/some/path", it will be
-    returned as a "Path::Tiny"
+  cpanm .
+  cpan  .
+  cpanp -i .
 
-    If you pass configurations to import:
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
 
-        use Path::FindDev find_dev => { set => $someset };
-
-    Then the exported "find_dev" will pass that set name to "Path::IsDev".
-
-    Though you should only do this if
-
-    *   the default set is inadequate for your usage
-
-    *   you don't want the set to be overridden by %ENV
-
-    Additionally, you can call find_dev directly:
-
-        require Path::FindDev;
-
-        my $result = Path::FindDev::find_dev('/some/path');
-
-    Which by design inhibits your capacity to specify an alternative set in
-    code.
-
-EXAMPLE USE-CASES
-    Have you ever found yourself doing
-
-        use FindBin;
-        use lib "$FindBin::Bin/../../../tlib"
-
-    In a test?
-
-    Have you found yourself paranoid of file-system semantics and tried
-
-        use FindBin;
-        use Path::Tiny qw(path)
-        use lib path($FindBin::Bin)->parent->parent->parent->child('tlib')->stringify;
-
-    Have you ever done either of the above in a test, only to find you've
-    needed to move the test to a deeper hierarchy, and thus, need to
-    re-write all your path resolution?
-
-    Have you ever had this problem for multiple files?
-
-    No more!
-
-        use FindBin;
-        use Path::FindDev qw(find_dev);
-        use lib find_dev($FindBin::Bin)->child('t','tlib')->stringify;
-
-    ^ Should work, regardless of which test you put it in, and regardless of
-    what $CWD happens to be when you call it.
-
-AUTHOR
-    Kent Fredric <kentfredric@gmail.com>
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2014 by Kent Fredric
-    <kentfredric@gmail.com>.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+This software is copyright (c) 2017 by Kent Fredric
+<kentfredric@gmail.com>.
 
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.

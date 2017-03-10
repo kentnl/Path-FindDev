@@ -1,6 +1,22 @@
 This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
 
-0.5.2
+0.5.3
+ [Added / configure requires]
+ - perl 5.006
+
+ [Added / test requires]
+ - perl 5.006
+
+ [Changed / runtime requires]
+ - perl 5.008 → 5.006
+
+ [Changed / test requires]
+ - Test::More 0.89 → 0
+
+ [Removed / runtime requires]
+ - utf8
+
+0.5.2 2014-08-16T04:12:22Z
  [Added / test requires]
  - File::Spec
 
@@ -109,4 +125,3 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
 
  [Changed / runtime requires]
  - Path::IsDev v0.1.1 → v0.2.2
-
