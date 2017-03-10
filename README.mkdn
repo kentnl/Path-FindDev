@@ -4,7 +4,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 # VERSION
 
-version v0.5.3
+version v0.5.4
 
 # DESCRIPTION
 
