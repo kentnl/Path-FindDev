@@ -5,7 +5,7 @@ use utf8;
 
 package Path::FindDev;
 
-our $VERSION = '0.5.3';
+our $VERSION = 'v0.5.3';
 
 # ABSTRACT: Find a development path somewhere in an upper hierarchy.
 
@@ -87,7 +87,7 @@ Path::FindDev - Find a development path somewhere in an upper hierarchy.
 
 =head1 VERSION
 
-version 0.5.3
+version v0.5.3
 
 =head1 DESCRIPTION
 
@@ -177,11 +177,11 @@ of what C<$CWD> happens to be when you call it.
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
