@@ -16,6 +16,8 @@ sub cmp_paths {
   my $realed = path($real)->absolute->stringify;
   is( $searched, $realed, 'found and expected match' );
 }
+
+plan tests => ( $ENV{SYSTEM_PATH_TEST} ? 3 : 2 );
 cmp_paths( $FindBin::Bin, path($FindBin::Bin)->parent );
 
 if ( $ENV{SYSTEM_PATH_TEST} ) {
@@ -56,5 +58,3 @@ if ( $ENV{SYSTEM_PATH_TEST} ) {
 else {
   diag "System path sanity check skipped due to potential security risks, set ENV{SYSTEM_PATH_TEST} if you wish to run this test";
 }
-done_testing;
-
