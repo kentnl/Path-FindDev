@@ -1,2 +1,3 @@
-.build
-Path-FindDev-*
+/.build
+/Path-FindDev-*
+/tmp/

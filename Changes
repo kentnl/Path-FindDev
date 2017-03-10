@@ -1,6 +1,15 @@
 Release history for Path-FindDev
 
 {{$NEXT}}
+ - Bugfix: Avoid test failures due to -Ddefault_inc_excludes_dot
+ - Add "v" to version due to upstream requirements
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.5.2, see misc/*.deps* for details
+ - configure: +1 (recommends: ↑1)
+ - develop: +14 ↑4 -3 (recommends: +1, suggests: ↑2)
+ - runtime: (recommends: +1)
+ - test: +1 ↓1 (recommends: ↑1 ↓1)
 
 0.5.2 2014-08-16T04:12:22Z
  [00 Trivial]
@@ -151,4 +160,3 @@ Release history for Path-FindDev
 
 0.1.0 2013-07-06T17:00:16Z
  - First version.
-
